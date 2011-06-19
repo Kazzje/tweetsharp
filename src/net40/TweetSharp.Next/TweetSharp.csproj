@@ -159,6 +159,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TwitterService.generated.cs</LastGenOutput>
     </None>
+    <None Include="Generated\_TwitterService.Spam.json" />
     <None Include="key.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

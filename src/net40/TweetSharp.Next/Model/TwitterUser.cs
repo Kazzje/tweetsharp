@@ -38,6 +38,7 @@ namespace TweetSharp
         private bool? _isVerified;
         private bool? _isGeoEnabled;
         private bool _isProfileBackgroundTiled;
+        private bool _following;
         private string _profileBackgroundColor;
         private string _profileBackgroundImageUrl;
         private string _profileLinkColor;
@@ -511,6 +512,24 @@ namespace TweetSharp
 
                 _isGeoEnabled = value;
                 OnPropertyChanged("IsGeoEnabled");
+            }
+        }
+
+#if !Smartphone && !NET20
+        [DataMember]
+#endif
+        public virtual bool Following
+        {
+            get { return _following; }
+            set
+            {
+                if (_following == value)
+                {
+                    return;
+                }
+
+                _following = value;
+                OnPropertyChanged("Following");
             }
         }
 

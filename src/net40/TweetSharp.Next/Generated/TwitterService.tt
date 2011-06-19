@@ -19,6 +19,7 @@
 		"_TwitterService.Notifications.json",
 		"_TwitterService.SavedSearches.json",
 		"_TwitterService.Search.json",
+		"_TwitterService.Spam.json",
 		"_TwitterService.Timelines.json", 
 		"_TwitterService.Trends.json", 
 		"_TwitterService.Tweets.json",

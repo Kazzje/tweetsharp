@@ -1,0 +1,2 @@
+﻿TwitterUser, "report_spam":POST, ReportSpam, int userId
+TwitterUser, "report_spam":POST, ReportSpam, string userScreenName
