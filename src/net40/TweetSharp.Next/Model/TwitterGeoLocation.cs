@@ -111,6 +111,7 @@ namespace TweetSharp
         /// Gets or sets the inner spatial coordinates.
         /// </summary>
         /// <value>The coordinates.</value>
+        [JsonProperty("coordinates")]
         public virtual GeoCoordinates Coordinates
         {
             get { return _coordinates;  }
@@ -125,6 +126,7 @@ namespace TweetSharp
         /// Gets or sets the type of location.
         /// </summary>
         /// <value>The type.</value>
+        [JsonProperty("type")]
         public virtual string Type
         {
             get { return _type;  }

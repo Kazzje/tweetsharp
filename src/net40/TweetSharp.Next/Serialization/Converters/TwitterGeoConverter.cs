@@ -11,8 +11,7 @@ namespace TweetSharp
     /// </summary>
     internal class TwitterGeoConverter : TwitterConverterBase
     {
-        private const string GeoTemplate =
-            "\"geo\":{{\"type\":\"Point\",\"coordinates\":[{0}, {1}]}}";
+        private const string GeoTemplate = "\"geo\":{{\"coordinates\":[{0}, {1}], \"type\":\"Point\"}}";
 
         /// <summary>
         /// Writes the JSON.
@@ -49,11 +48,11 @@ namespace TweetSharp
                 return null;
             }
 
-
             if (reader.TokenType != JsonToken.StartArray)
             {
                 return null;
             }
+
             reader.Read();
             var coords = new double[2];
             if (reader.TokenType == JsonToken.Float)

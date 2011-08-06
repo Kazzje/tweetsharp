@@ -32,12 +32,18 @@ namespace TweetSharp.Serialization
             {
                 return default(T);
             }
+
             if ((int)response.StatusCode >= 500)
             {
                 return default(T);
             }
 
             var content = response.Content;
+
+            if (string.IsNullOrEmpty(content))
+            {
+                return default(T);
+            }
 
             if (content.Equals("END STREAMING"))
             {

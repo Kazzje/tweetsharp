@@ -276,6 +276,24 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int page, int count);	
 
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineSince(long sinceId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineSince(long sinceId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineSince(long sinceId, int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts);	
+
 		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline();	
 
 		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline(int count);	
@@ -312,6 +330,24 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> ListTweetsOnUserTimelineBefore(long maxId, int page, int count);	
 
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimeline(bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimeline(int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimeline(int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimelineSince(long sinceId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimelineSince(long sinceId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimelineSince(long sinceId, int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimelineBefore(long maxId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimelineBefore(long maxId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnUserTimelineBefore(long maxId, int page, int count, bool includeRts);	
+
 		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId);	
 
 		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId, int count);	
@@ -347,6 +383,42 @@ namespace TweetSharp
 		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page);	
 
 		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId, int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(string screenName, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(string screenName, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(string screenName, int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int page, int count, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, bool includeRts);	
 
 		IEnumerable<TwitterStatus> ListTweetsMentioningMe();	
 
@@ -795,6 +867,24 @@ namespace TweetSharp
 
 		IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
+		IAsyncResult ListTweetsOnHomeTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
 		IAsyncResult ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
 		IAsyncResult ListTweetsOnFriendsTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
@@ -831,6 +921,24 @@ namespace TweetSharp
 
 		IAsyncResult ListTweetsOnUserTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
+		IAsyncResult ListTweetsOnUserTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnUserTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
 		IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
 		IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
@@ -866,6 +974,42 @@ namespace TweetSharp
 		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
 		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimeline(string screenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimeline(string screenName, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimeline(string screenName, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
 		IAsyncResult ListTweetsMentioningMe(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
@@ -1967,6 +2111,24 @@ namespace TweetSharp
 
 		void ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
+		void ListTweetsOnHomeTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
 		void ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
 		void ListTweetsOnFriendsTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
@@ -2003,6 +2165,24 @@ namespace TweetSharp
 
 		void ListTweetsOnUserTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
+		void ListTweetsOnUserTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnUserTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
 		void ListTweetsOnSpecifiedUserTimeline(int userId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
 		void ListTweetsOnSpecifiedUserTimeline(int userId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
@@ -2038,6 +2218,42 @@ namespace TweetSharp
 		void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
 		void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimeline(int userId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimeline(int userId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimeline(int userId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimeline(string screenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimeline(string screenName, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimeline(string screenName, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
 		void ListTweetsMentioningMe(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
@@ -2893,6 +3109,51 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineSince(long sinceId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineSince(long sinceId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineSince(long sinceId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline()
 		{
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString);
@@ -2983,6 +3244,51 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimeline(bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimeline(int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimeline(int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimelineSince(long sinceId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimelineSince(long sinceId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimelineSince(long sinceId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimelineBefore(long maxId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimelineBefore(long maxId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimelineBefore(long maxId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId)
 		{
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId);
@@ -3071,6 +3377,96 @@ namespace TweetSharp
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count)
 		{
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(int userId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(string screenName, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(string screenName, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimeline(string screenName, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
 		}
 
 		public virtual IEnumerable<TwitterStatus> ListTweetsMentioningMe()
@@ -4183,6 +4579,51 @@ namespace TweetSharp
 			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual IAsyncResult ListTweetsOnHomeTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual IAsyncResult ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			return WithHammock(action, "statuses/friends_timeline", FormatAsString);
@@ -4273,6 +4714,51 @@ namespace TweetSharp
 			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual IAsyncResult ListTweetsOnUserTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnUserTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId);
@@ -4361,6 +4847,96 @@ namespace TweetSharp
 		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimeline(int userId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimeline(string screenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimeline(string screenName, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimeline(string screenName, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
 		}
 
 		public virtual IAsyncResult ListTweetsMentioningMe(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
@@ -5473,6 +6049,51 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual IAsyncResult BeginListTweetsOnHomeTimeline(bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimeline(int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimeline(int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimelineSince(long sinceId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimelineSince(long sinceId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimelineSince(long sinceId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimelineBefore(long maxId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual IAsyncResult BeginListTweetsOnFriendsTimeline()
 		{
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString);
@@ -5563,6 +6184,51 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual IAsyncResult BeginListTweetsOnUserTimeline(bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimeline(int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimeline(int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimelineSince(long sinceId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimelineSince(long sinceId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimelineSince(long sinceId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimelineBefore(long maxId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimelineBefore(long maxId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnUserTimelineBefore(long maxId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimeline(int userId)
 		{
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId);
@@ -5651,6 +6317,96 @@ namespace TweetSharp
 		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count)
 		{
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimeline(int userId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimeline(int userId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimeline(int userId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimeline(string screenName, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimeline(string screenName, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimeline(string screenName, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
 		}
 
 		public virtual IAsyncResult BeginListTweetsMentioningMe()
@@ -7843,6 +8599,51 @@ namespace TweetSharp
 			WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual void ListTweetsOnHomeTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual void ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			WithHammock(action, "statuses/friends_timeline", FormatAsString);
@@ -7933,6 +8734,51 @@ namespace TweetSharp
 			WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
+		public virtual void ListTweetsOnUserTimeline(bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimeline(int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimeline(int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimelineSince(long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimelineSince(long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimelineSince(long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimelineBefore(long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnUserTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
 		public virtual void ListTweetsOnSpecifiedUserTimeline(int userId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId);
@@ -8021,6 +8867,96 @@ namespace TweetSharp
 		public virtual void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimeline(int userId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimeline(int userId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimeline(int userId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineSince(int userId, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineBefore(int userId, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?user_id=", userId, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimeline(string screenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimeline(string screenName, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimeline(string screenName, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineSince(string screenName, long sinceId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&since_id=", sinceId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnSpecifiedUserTimelineBefore(string screenName, long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "statuses/user_timeline", FormatAsString, "?screen_name=", screenName, "&max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
 		}
 
 		public virtual void ListTweetsMentioningMe(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
