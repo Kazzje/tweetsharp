@@ -53,7 +53,7 @@ namespace TweetSharp
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        internal virtual string Error { get; set; }
+        public virtual string Error { get; set; }
 
         /// <summary>
         /// Gets the value of either the Error element or the

@@ -33,6 +33,7 @@ namespace TweetSharp
         private TwitterStatus _retweetedStatus;
         private TwitterGeoLocation _location;
         private TwitterEntities _entities;
+        private string _retweetCount;
 
 #if !Smartphone && !NET20
         [DataMember]
@@ -262,6 +263,24 @@ namespace TweetSharp
 
                 _retweetedStatus = value;
                 OnPropertyChanged("RetweetedStatus");
+            }
+        }
+
+#if !Smartphone && !NET20
+        [DataMember]
+#endif
+        public virtual string RetweetCount
+        {
+            get { return _retweetCount; }
+            set
+            {
+                if (_retweetCount == value)
+                {
+                    return;
+                }
+
+                _retweetCount = value;
+                OnPropertyChanged("RetweetCount");
             }
         }
 
