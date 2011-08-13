@@ -29,6 +29,7 @@ namespace TweetSharp
     {
         HashTag,
         Mention,
-        Url
+        Url,
+        Media
     }
 }
