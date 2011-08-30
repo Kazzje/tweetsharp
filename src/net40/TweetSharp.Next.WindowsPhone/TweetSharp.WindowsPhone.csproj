@@ -207,6 +207,9 @@
     <Compile Include="..\TweetSharp.Next\Service\TwitterService.Streaming.cs">
       <Link>Service\TwitterService.Streaming.cs</Link>
     </Compile>
+    <Compile Include="..\TweetSharp.Next\Service\TwitterService.Upload.cs">
+      <Link>Service\TwitterService.Upload.cs</Link>
+    </Compile>
     <Compile Include="..\TweetSharp.Next\Service\TwitterServiceFormat.cs">
       <Link>Service\TwitterServiceFormat.cs</Link>
     </Compile>

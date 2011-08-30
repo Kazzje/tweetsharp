@@ -113,6 +113,7 @@
     <Compile Include="Serialization\SerializerBase.cs" />
     <Compile Include="Service\TwitterService.cs" />
     <Compile Include="Service\TwitterService.OAuth.cs" />
+    <Compile Include="Service\TwitterService.Upload.cs" />
     <Compile Include="Service\TwitterServiceFormat.cs" />
   </ItemGroup>
   <ItemGroup>

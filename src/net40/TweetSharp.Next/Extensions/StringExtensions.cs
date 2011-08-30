@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace TweetSharp
 {
-    internal static class StringExtensions
+    public static class StringExtensions
     {
         public static bool IsNullOrBlank(this string input)
         {

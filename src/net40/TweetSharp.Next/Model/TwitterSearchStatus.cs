@@ -446,6 +446,7 @@ namespace TweetSharp
                                  Source = searchStatus.Source,
                                  RawSource = searchStatus.RawSource,
                                  Text = searchStatus.Text,
+                                 Entities = searchStatus.Entities,
                                  User = user
                              };
 

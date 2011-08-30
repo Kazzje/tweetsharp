@@ -25,9 +25,9 @@ namespace TweetSharp
         public string Proxy { get; set; }
 
         public bool IncludeEntities { get; set; }
-        
+
         private TwitterServiceFormat _format;
-        
+
         private readonly RestClient _client;
 
         private readonly JsonSerializer _json;
@@ -51,11 +51,11 @@ namespace TweetSharp
         {
             get
             {
-                if(_customDeserializer != null)
+                if (_customDeserializer != null)
                 {
                     return _customDeserializer;
                 }
-                switch(Format)
+                switch (Format)
                 {
                     case TwitterServiceFormat.Json:
                         return _json;
@@ -92,7 +92,7 @@ namespace TweetSharp
             }
             set { _customSerializer = value; }
         }
-        
+
         private string _consumerKey;
         private string _consumerSecret;
         private string _token;
@@ -105,7 +105,7 @@ namespace TweetSharp
         }
 #endif
 
- #if !SILVERLIGHT
+#if !SILVERLIGHT
         static TwitterService()
         {
             ServicePointManager.Expect100Continue = false;
@@ -116,7 +116,8 @@ namespace TweetSharp
         public virtual TwitterResponse Response { get; private set; }
 #endif
 
-        public TwitterService(TwitterClientInfo info) : this()
+        public TwitterService(TwitterClientInfo info)
+            : this()
         {
             _consumerKey = info.ConsumerKey;
             _consumerSecret = info.ConsumerSecret;
@@ -125,13 +126,15 @@ namespace TweetSharp
             _info = info;
         }
 
-        public TwitterService(string consumerKey, string consumerSecret) : this()
+        public TwitterService(string consumerKey, string consumerSecret)
+            : this()
         {
             _consumerKey = consumerKey;
             _consumerSecret = consumerSecret;
         }
 
-        public TwitterService(string consumerKey, string consumerSecret, string token, string tokenSecret) : this()
+        public TwitterService(string consumerKey, string consumerSecret, string token, string tokenSecret)
+            : this()
         {
             _consumerKey = consumerKey;
             _consumerSecret = consumerSecret;
@@ -248,14 +251,14 @@ namespace TweetSharp
             request.Path = path;
 
             SetTwitterClientInfo(request);
-            
+
             return request;
         }
 
         private void SetTwitterClientInfo(RestBase request)
         {
             if (_info == null) return;
-            if(!_info.ClientName.IsNullOrBlank())
+            if (!_info.ClientName.IsNullOrBlank())
             {
                 request.AddHeader("X-Twitter-Name", _info.ClientName);
                 request.UserAgent = _info.ClientName;
@@ -280,12 +283,12 @@ namespace TweetSharp
             var response = new RestResponse<T> { StatusCode = HttpStatusCode.OK };
             response.SetContent(content);
 
-            if(_customDeserializer != null)
+            if (_customDeserializer != null)
             {
                 return _customDeserializer.Deserialize(response);
             }
 
-            switch(Format)
+            switch (Format)
             {
                 case TwitterServiceFormat.Json:
                     return _json.DeserializeContent<T>(content);
@@ -309,14 +312,14 @@ namespace TweetSharp
                 }
                 _format = value;
                 FormatAsString = string.Concat(".", Format.ToString().ToLowerInvariant());
-                switch(Format)
+                switch (Format)
                 {
                     case TwitterServiceFormat.Json:
-                        if(_customSerializer == null)
+                        if (_customSerializer == null)
                         {
                             _client.Serializer = _json;
                         }
-                        if(_customDeserializer == null)
+                        if (_customDeserializer == null)
                         {
                             _client.Deserializer = _json;
                         }
@@ -347,7 +350,6 @@ namespace TweetSharp
             if (segments == null) throw new ArgumentNullException("segments");
 
             // Support alternate client authorities here
-
             if (path.Equals("search"))
             {
                 _client.Authority = Globals.SearchAPIAuthority;
@@ -364,10 +366,10 @@ namespace TweetSharp
                 // Currently only trends takes DateTimes
                 if (segments[i] is DateTime)
                 {
-                    segments[i] = ((DateTime) segments[i]).ToString("yyyy-MM-dd");
+                    segments[i] = ((DateTime)segments[i]).ToString("yyyy-MM-dd");
                 }
 
-                if (typeof (IEnumerable).IsAssignableFrom(segments[i].GetType()) && !(segments[i].GetType() == typeof (string)))
+                if (typeof(IEnumerable).IsAssignableFrom(segments[i].GetType()) && !(segments[i].GetType() == typeof(string)))
                 {
                     ResolveEnumerableUrlSegments(segments, i);
                 }
@@ -377,7 +379,7 @@ namespace TweetSharp
 
             PathHelpers.EscapeDataContainingUrlSegments(segments);
 
-            if(IncludeEntities)// && !path.Contains("/lists"))
+            if (IncludeEntities)// && !path.Contains("/lists"))
             {
                 segments.Add(segments.Count() > 1 ? "&include_entities=" : "?include_entities=");
                 segments.Add("1");
@@ -390,7 +392,7 @@ namespace TweetSharp
 
         private static void ResolveEnumerableUrlSegments(IList<object> segments, int i)
         {
-            var collection = (IEnumerable<object>) segments[i];
+            var collection = (IEnumerable<object>)segments[i];
             var total = collection.Count();
             var sb = new StringBuilder();
             var count = 0;
@@ -511,10 +513,10 @@ namespace TweetSharp
         private void WithHammock<T>(Action<T, TwitterResponse> action, string path) where T : class
         {
             var request = PrepareHammockQuery(path);
-            
+
             WithHammockImpl(request, action);
         }
-        
+
         private void WithHammock<T>(Action<T, TwitterResponse> action, string path, params object[] segments) where T : class
         {
             WithHammock(action, ResolveUrlSegments(path, segments.ToList()));
@@ -545,7 +547,7 @@ namespace TweetSharp
                     var entity = response.ContentEntity;
                     action.Invoke(entity, new TwitterResponse(response));
                 }));
-        }      
+        }
 #endif
 
         private static T TryAsyncResponse<T>(Func<T> action, out Exception exception)
