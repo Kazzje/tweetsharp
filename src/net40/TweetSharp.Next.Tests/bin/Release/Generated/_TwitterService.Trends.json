@@ -1,5 +1,5 @@
-﻿TwitterTrends, "trends/current", ListCurrentTrends
-TwitterTrends, "trends/current", ListCurrentTrends, string exclude
+﻿TwitterCurrentTrends, "trends/{woeid}", ListCurrentTrends, int woeid
+TwitterCurrentTrends, "trends/{woeid}", ListCurrentTrends, string exclude, int woeid
 
 TwitterTrends, "trends/daily", ListDailyTrends
 TwitterTrends, "trends/daily", ListDailyTrends, DateTime date

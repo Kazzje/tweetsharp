@@ -1,40 +1,181 @@
 ﻿// List resources
 
-TwitterList, "{list_owner}/lists":POST, CreateList, string listOwner, string name
-TwitterList, "{list_owner}/lists":POST, CreateList, string listOwner, string name, string description
-TwitterList, "{list_owner}/lists":POST, CreateList, string listOwner, string name, string description, string mode
+TwitterList, "lists/create":POST, CreateList, string name
+TwitterList, "lists/create":POST, CreateList, string name, string description
+TwitterList, "lists/create":POST, CreateList, string name, string description, string mode
 
-TwitterCursorList<TwitterList>, "{list_owner}/lists", ListListsFor, string listOwner
-TwitterList, "{list_owner}/lists/{id_or_slug}", GetList, string listOwner, string idOrSlug
-TwitterList, "{list_owner}/lists/{id_or_slug}":DELETE, DeleteList, string listOwner, string idOrSlug
+TwitterList, "lists/update":POST, UpdateList, long listId, string name
+TwitterList, "lists/update":POST, UpdateList, long listId, string name, string description
+TwitterList, "lists/update":POST, UpdateList, long listId, string name, string description, string mode
+TwitterList, "lists/update":POST, UpdateList, string slug, int ownerId, string name
+TwitterList, "lists/update":POST, UpdateList, string slug, int ownerId, string name, string description
+TwitterList, "lists/update":POST, UpdateList, string slug, int ownerId, string name, string description, string mode
+TwitterList, "lists/update":POST, UpdateList, string slug, string ownerScreenName, string name
+TwitterList, "lists/update":POST, UpdateList, string slug, string ownerScreenName, string name, string description
+TwitterList, "lists/update":POST, UpdateList, string slug, string ownerScreenName, string name, string description, string mode
 
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnList, string listOwner, string idOrSlug
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnList, string listOwner, string idOrSlug, int perPage
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnList, string listOwner, string idOrSlug, int page, int perPage
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnListSince, string listOwner, string idOrSlug, long sinceId
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnListSince, string listOwner, string idOrSlug, long sinceId, int perPage
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnListSince, string listOwner, string idOrSlug, long sinceId, int page, int perPage
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnListBefore, string listOwner, string idOrSlug, long maxId
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnListBefore, string listOwner, string idOrSlug, long maxId, int perPage
-IEnumerable<TwitterStatus>, "{list_owner}/lists/{id_or_slug}/statuses", ListTweetsOnListBefore, string listOwner, string idOrSlug, long maxId, int page, int perPage
+TwitterCursorList<TwitterList>, "lists", ListLists
+TwitterCursorList<TwitterList>, "lists", ListLists, long cursor
+TwitterCursorList<TwitterList>, "lists", ListListsFor, int userId
+TwitterCursorList<TwitterList>, "lists", ListListsFor, int userId, long cursor
+TwitterCursorList<TwitterList>, "lists", ListListsFor, string screenName
+TwitterCursorList<TwitterList>, "lists", ListListsFor, string screenName, long cursor
+
+TwitterList, "lists/show", GetList, int userId
+TwitterList, "lists/show", GetList, string slug, int ownerId
+TwitterList, "lists/show", GetList, string slug, string ownerScreenName
+
+TwitterList, "lists/destroy":POST, DeleteList, long listId
+TwitterList, "lists/destroy":POST, DeleteList, string slug, int ownerId
+TwitterList, "lists/destroy":POST, DeleteList, string slug, string ownerScreenName
+
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long listId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long listId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long listId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long listId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long listId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long listId, int page, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, int ownerId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, int ownerId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, int ownerId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, int ownerId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, int ownerId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, int ownerId, int page, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, string ownerScreenName
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, string ownerScreenName, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, string ownerScreenName, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, string ownerScreenName, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, string ownerScreenName, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, string slug, string ownerScreenName, int page, int perPage, bool includeRts
+
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, long listId, long sinceId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, long listId, long sinceId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, long listId, long sinceId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, long listId, long sinceId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, long listId, long sinceId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, long listId, int page, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, int ownerId, long sinceId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, int ownerId, long sinceId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, int ownerId, long sinceId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, int ownerId, long sinceId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, int ownerId, long sinceId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, string ownerScreenName, long sinceId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, string ownerScreenName, long sinceId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, string ownerScreenName, long sinceId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, string ownerScreenName, long sinceId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListSince, string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts
+
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, long listId, long maxId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, long listId, long maxId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, long listId, long maxId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, long listId, long maxId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, long listId, long maxId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, long listId, int page, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, int ownerId, long maxId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, int ownerId, long maxId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, int ownerId, long maxId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, int ownerId, long maxId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, int ownerId, long maxId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, int ownerId, long maxId, int page, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, string ownerScreenName, long maxId
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, string ownerScreenName, long maxId, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, string ownerScreenName, long maxId, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, string ownerScreenName, long maxId, int perPage, bool includeRts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, string ownerScreenName, long maxId, int page, int perPage
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnListBefore, string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts
 
 // List Memberships Resources
 
-TwitterCursorList<TwitterList>, "{list_owner}/lists/memberships", ListListMembershipsFor, string listOwner
-TwitterCursorList<TwitterUser>, "{list_owner}/{id_or_slug}/members", ListListMembers, string listOwner, string idOrSlug
-TwitterUser, "{list_owner}/{id_or_slug}/members":POST, AddListMember, string listOwner, string listIdOrSlug, long id
-TwitterUser, "{list_owner}/{id_or_slug}/members":DELETE, RemoveListMember, string listOwner, string listIdOrSlug, long id
-TwitterCursorList<TwitterList>, "{list_owner}/{id_or_slug}/create_all":POST, AddListMembers, string listOwner, string listIdOrSlug, long userId
-TwitterCursorList<TwitterList>, "{list_owner}/{id_or_slug}/create_all":POST, AddListMembers, string listOwner, string listIdOrSlug, string screenName
-TwitterUser, "{list_owner}/{id_or_slug}/members/{id}", VerifyListMembership, string listOwner, string listIdOrSlug, long id
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMemberships
+
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, int userId
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, int userId, long cursor
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, int userId, bool filterToOwnedLists
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, int userId, bool filterToOwnedLists, long cursor
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, string screenName
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, string screenName, long cursor
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, string screenName, bool filterToOwnedLists
+TwitterCursorList<TwitterList>, "lists/memberships", ListListMembershipsFor, string screenName, bool filterToOwnedLists, long cursor
+
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, long listId
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, long listId, long cursor
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, long listId, bool skipStatus
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, long listId, bool skipStatus, long cursor
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, string slug, int ownerId
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, string slug, int ownerId, long cursor
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, string slug, string ownerScreenName, bool skipStatus
+TwitterCursorList<TwitterUser>, "lists/members", ListListMembers, string slug, string ownerScreenName, bool skipStatus, long cursor
+
+TwitterUser, "lists/members/create":POST, AddListMember, long listId, int userId
+TwitterUser, "lists/members/create":POST, AddListMember, string slug, int ownerId, int userId
+TwitterUser, "lists/members/create":POST, AddListMember, string slug, string ownerScreenName, int userId
+TwitterUser, "lists/members/create":POST, AddListMember, long listId, string screenName
+TwitterUser, "lists/members/create":POST, AddListMember, string slug, int ownerId, string screenName
+TwitterUser, "lists/members/create":POST, AddListMember, string slug, string ownerScreenName, string screenName
+
+TwitterUser, "lists/members/destroy":POST, RemoveListMember, long listId, int userId
+TwitterUser, "lists/members/destroy":POST, RemoveListMember, string slug, int ownerId, int userId
+TwitterUser, "lists/members/destroy":POST, RemoveListMember, string slug, string ownerScreenName, int userId
+TwitterUser, "lists/members/destroy":POST, RemoveListMember, long listId, string screenName
+TwitterUser, "lists/members/destroy":POST, RemoveListMember, string slug, int ownerId, string screenName
+TwitterUser, "lists/members/destroy":POST, RemoveListMember, string slug, string ownerScreenName, string screenName
+
+TwitterCursorList<TwitterList>, "lists/members/create_all":POST, AddListMembers, long listId, string userId
+TwitterCursorList<TwitterList>, "lists/members/create_all":POST, AddListMembersByScreenName, long listId, string screenName
+TwitterCursorList<TwitterList>, "lists/members/create_all":POST, AddListMembers, string slug, int ownerId, string userId
+TwitterCursorList<TwitterList>, "lists/members/create_all":POST, AddListMembersByScreenName, string slug, int ownerId, string screenName
+TwitterCursorList<TwitterList>, "lists/members/create_all":POST, AddListMembers, string slug, string ownerScreenName, string userId
+TwitterCursorList<TwitterList>, "lists/members/create_all":POST, AddListMembersByScreenName, string slug, string ownerScreenName, string screenName
+
+TwitterUser, "lists/members/show", VerifyListMembership, long listId, int userId
+TwitterUser, "lists/members/show", VerifyListMembership, long listId, int userId, bool skipStatus
+TwitterUser, "lists/members/show", VerifyListMembership, long listId, string screenName
+TwitterUser, "lists/members/show", VerifyListMembership, long listId, string screenName, bool skipStatus
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, int ownerId, int userId
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, int ownerId, int userId, bool skipStatus
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, int ownerId, string screenName
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, int ownerId, string screenName, bool skipStatus
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, string ownerScreenName, int userId
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, string ownerScreenName, int userId, bool skipStatus
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, string ownerScreenName, string screenName
+TwitterUser, "lists/members/show", VerifyListMembership, string slug, string ownerScreenName, string screenName, bool skipStatus
 
 // List Subscribers resources
+IEnumerable<TwitterList>, "lists/all", ListListSubscriptions
+IEnumerable<TwitterList>, "lists/all", ListListSubscriptionsFor, int userId
+IEnumerable<TwitterList>, "lists/all", ListListSubscriptionsFor, string screenName
 
-TwitterCursorList<TwitterList>, "{list_owner}/lists/subscriptions", ListListSubscriptionsFor, string listOwner
-TwitterCursorList<TwitterUser>, "{list_owner}/{id_or_slug}/subscribers", ListListSubscribers, string listOwner, string idOrSlug
-TwitterUser, "{list_owner}/{id_or_slug}/subscribers":POST, FollowList, string listOwner, string idOrSlug
-TwitterUser, "{list_owner}/{id_or_slug}/subscribers":DELETE, UnfollowList, string listOwner, string idOrSlug
-TwitterUser, "{list_owner}/{id_or_slug}/subscribers/{id}", VerifyListSubscription, string listOwner, string listIdOrSlug, long id
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, long listId
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, long listId, long cursor
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, long listId, bool skipStatus
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, long listId, bool skipStatus, long cursor
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, string slug, int ownerId
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, string slug, int ownerId, long cursor
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, string slug, string ownerScreenName, bool skipStatus
+TwitterCursorList<TwitterUser>, "lists/subscribers", ListListSubscribers, string slug, string ownerScreenName, bool skipStatus, long cursor
+
+TwitterUser, "lists/subscribers/create":POST, FollowList, long listId
+TwitterUser, "lists/subscribers/create":POST, FollowList, string slug, int ownerId
+TwitterUser, "lists/subscribers/create":POST, FollowList, string slug, string ownerScreenName
+
+TwitterUser, "lists/subscribers/destroy":POST, UnfollowList, long listId
+TwitterUser, "lists/subscribers/create":POST, UnfollowList, string slug, int ownerId
+TwitterUser, "lists/subscribers/create":POST, UnfollowList, string slug, string ownerScreenName
+
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, long listId, int userId
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, long listId, int userId, bool skipStatus
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, long listId, string screenName
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, long listId, string screenName, bool skipStatus
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, int ownerId, int userId
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, int ownerId, int userId, bool skipStatus
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, int ownerId, string screenName
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, int ownerId, string screenName, bool skipStatus
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, string ownerScreenName, int userId
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, string ownerScreenName, int userId, bool skipStatus
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, string ownerScreenName, string screenName
+TwitterUser, "lists/subscribers/show", VerifyListSubscription, string slug, string ownerScreenName, string screenName, bool skipStatus
 
 
 

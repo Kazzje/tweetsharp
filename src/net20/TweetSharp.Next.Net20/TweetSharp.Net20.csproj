@@ -93,6 +93,9 @@
     <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterClientInfo.cs">
       <Link>Model\TwitterClientInfo.cs</Link>
     </Compile>
+    <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterCurrentTrends.cs">
+      <Link>Model\TwitterCurrentTrends.cs</Link>
+    </Compile>
     <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterCursorList.cs">
       <Link>Model\TwitterCursorList.cs</Link>
     </Compile>

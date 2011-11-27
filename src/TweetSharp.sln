@@ -29,17 +29,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSharp.Silverlight", "net40\TweetSharp.Silverlight\TweetSharp.Silverlight.csproj", "{8BAC876F-19A2-4296-9828-E2F59AD8BAC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP", "..\..\..\SVN\Main\CarbonWP\CarbonWP.csproj", "{764D8190-79C6-4251-9C45-B4DA68EE8F9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP", "..\..\..\SVN\Branches\Mango\CarbonWP\CarbonWP.csproj", "{764D8190-79C6-4251-9C45-B4DA68EE8F9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Controls", "..\..\..\SVN\Main\CarbonWP.Controls\CarbonWP.Controls.csproj", "{072DF4EF-4AF6-4F94-9539-0DA01628C1A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Controls", "..\..\..\SVN\Branches\Mango\CarbonWP.Controls\CarbonWP.Controls.csproj", "{072DF4EF-4AF6-4F94-9539-0DA01628C1A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Model", "..\..\..\SVN\Main\CarbonWP.Model\CarbonWP.Model.csproj", "{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.ViewModel", "..\..\..\SVN\Branches\Mango\CarbonWP.ViewModel\CarbonWP.ViewModel.csproj", "{695B8F60-005D-4E11-A6DF-CB87319B0C7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Twitter.Library", "..\..\..\SVN\Main\CarbonWP.Twitter.Library\CarbonWP.Twitter.Library.csproj", "{50952393-3B88-475F-8ABB-C4EFD333B087}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Utilities", "..\..\..\SVN\Branches\Mango\CarbonWP.Utilities\CarbonWP.Utilities.csproj", "{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Utilities", "..\..\..\SVN\Main\CarbonWP.Utilities\CarbonWP.Utilities.csproj", "{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Twitter.Library", "..\..\..\SVN\Branches\Mango\CarbonWP.Twitter.Library\CarbonWP.Twitter.Library.csproj", "{50952393-3B88-475F-8ABB-C4EFD333B087}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.ViewModel", "..\..\..\SVN\Main\CarbonWP.ViewModel\CarbonWP.ViewModel.csproj", "{695B8F60-005D-4E11-A6DF-CB87319B0C7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonWP.Model", "..\..\..\SVN\Branches\Mango\CarbonWP.Model\CarbonWP.Model.csproj", "{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,22 +81,22 @@ Global
 		{072DF4EF-4AF6-4F94-9539-0DA01628C1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{072DF4EF-4AF6-4F94-9539-0DA01628C1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{072DF4EF-4AF6-4F94-9539-0DA01628C1A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50952393-3B88-475F-8ABB-C4EFD333B087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50952393-3B88-475F-8ABB-C4EFD333B087}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50952393-3B88-475F-8ABB-C4EFD333B087}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50952393-3B88-475F-8ABB-C4EFD333B087}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{695B8F60-005D-4E11-A6DF-CB87319B0C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{695B8F60-005D-4E11-A6DF-CB87319B0C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{695B8F60-005D-4E11-A6DF-CB87319B0C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{695B8F60-005D-4E11-A6DF-CB87319B0C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C869ACC-DDF7-4B9C-B328-A6ABC4AE590B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50952393-3B88-475F-8ABB-C4EFD333B087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50952393-3B88-475F-8ABB-C4EFD333B087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50952393-3B88-475F-8ABB-C4EFD333B087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50952393-3B88-475F-8ABB-C4EFD333B087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB9F082-5C99-40C6-8F24-5EC4A7E157B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

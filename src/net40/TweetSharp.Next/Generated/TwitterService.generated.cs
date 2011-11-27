@@ -147,59 +147,313 @@ namespace TweetSharp
 
 		TwitterFriendship GetFriendshipInfo(int sourceId, int targetId);	
 
-		TwitterList CreateList(string listOwner, string name);	
+		TwitterList CreateList(string name);	
 
-		TwitterList CreateList(string listOwner, string name, string description);	
+		TwitterList CreateList(string name, string description);	
 
-		TwitterList CreateList(string listOwner, string name, string description, string mode);	
+		TwitterList CreateList(string name, string description, string mode);	
 
-		TwitterCursorList<TwitterList> ListListsFor(string listOwner);	
+		TwitterList UpdateList(long listId, string name);	
 
-		TwitterList GetList(string listOwner, string idOrSlug);	
+		TwitterList UpdateList(long listId, string name, string description);	
 
-		TwitterList DeleteList(string listOwner, string idOrSlug);	
+		TwitterList UpdateList(long listId, string name, string description, string mode);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnList(string listOwner, string idOrSlug);	
+		TwitterList UpdateList(string slug, int ownerId, string name);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnList(string listOwner, string idOrSlug, int perPage);	
+		TwitterList UpdateList(string slug, int ownerId, string name, string description);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnList(string listOwner, string idOrSlug, int page, int perPage);	
+		TwitterList UpdateList(string slug, int ownerId, string name, string description, string mode);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId);	
+		TwitterList UpdateList(string slug, string ownerScreenName, string name);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int perPage);	
+		TwitterList UpdateList(string slug, string ownerScreenName, string name, string description);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int page, int perPage);	
+		TwitterList UpdateList(string slug, string ownerScreenName, string name, string description, string mode);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId);	
+		TwitterCursorList<TwitterList> ListLists();	
 
-		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int perPage);	
+		TwitterCursorList<TwitterList> ListLists(long cursor);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int page, int perPage);	
+		TwitterCursorList<TwitterList> ListListsFor(int userId);	
 
-		TwitterCursorList<TwitterList> ListListMembershipsFor(string listOwner);	
+		TwitterCursorList<TwitterList> ListListsFor(int userId, long cursor);	
 
-		TwitterCursorList<TwitterUser> ListListMembers(string listOwner, string idOrSlug);	
+		TwitterCursorList<TwitterList> ListListsFor(string screenName);	
 
-		TwitterUser AddListMember(string listOwner, string listIdOrSlug, long id);	
+		TwitterCursorList<TwitterList> ListListsFor(string screenName, long cursor);	
 
-		TwitterUser RemoveListMember(string listOwner, string listIdOrSlug, long id);	
+		TwitterList GetList(int userId);	
 
-		TwitterCursorList<TwitterList> AddListMembers(string listOwner, string listIdOrSlug, long userId);	
+		TwitterList GetList(string slug, int ownerId);	
 
-		TwitterCursorList<TwitterList> AddListMembers(string listOwner, string listIdOrSlug, string screenName);	
+		TwitterList GetList(string slug, string ownerScreenName);	
 
-		TwitterUser VerifyListMembership(string listOwner, string listIdOrSlug, long id);	
+		TwitterList DeleteList(long listId);	
 
-		TwitterCursorList<TwitterList> ListListSubscriptionsFor(string listOwner);	
+		TwitterList DeleteList(string slug, int ownerId);	
 
-		TwitterCursorList<TwitterUser> ListListSubscribers(string listOwner, string idOrSlug);	
+		TwitterList DeleteList(string slug, string ownerScreenName);	
 
-		TwitterUser FollowList(string listOwner, string idOrSlug);	
+		IEnumerable<TwitterStatus> ListTweetsOnList(long listId);	
 
-		TwitterUser UnfollowList(string listOwner, string idOrSlug);	
+		IEnumerable<TwitterStatus> ListTweetsOnList(long listId, bool includeRts);	
 
-		TwitterUser VerifyListSubscription(string listOwner, string listIdOrSlug, long id);	
+		IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, bool includeRts);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage);	
+
+		IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts);	
+
+		TwitterCursorList<TwitterList> ListListMemberships();	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(int userId);	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(int userId, long cursor);	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(int userId, bool filterToOwnedLists);	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(int userId, bool filterToOwnedLists, long cursor);	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName);	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName, long cursor);	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName, bool filterToOwnedLists);	
+
+		TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName, bool filterToOwnedLists, long cursor);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(long listId);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(long listId, long cursor);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(long listId, bool skipStatus);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(long listId, bool skipStatus, long cursor);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(string slug, int ownerId);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(string slug, int ownerId, long cursor);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(string slug, string ownerScreenName, bool skipStatus);	
+
+		TwitterCursorList<TwitterUser> ListListMembers(string slug, string ownerScreenName, bool skipStatus, long cursor);	
+
+		TwitterUser AddListMember(long listId, int userId);	
+
+		TwitterUser AddListMember(string slug, int ownerId, int userId);	
+
+		TwitterUser AddListMember(string slug, string ownerScreenName, int userId);	
+
+		TwitterUser AddListMember(long listId, string screenName);	
+
+		TwitterUser AddListMember(string slug, int ownerId, string screenName);	
+
+		TwitterUser AddListMember(string slug, string ownerScreenName, string screenName);	
+
+		TwitterUser RemoveListMember(long listId, int userId);	
+
+		TwitterUser RemoveListMember(string slug, int ownerId, int userId);	
+
+		TwitterUser RemoveListMember(string slug, string ownerScreenName, int userId);	
+
+		TwitterUser RemoveListMember(long listId, string screenName);	
+
+		TwitterUser RemoveListMember(string slug, int ownerId, string screenName);	
+
+		TwitterUser RemoveListMember(string slug, string ownerScreenName, string screenName);	
+
+		TwitterCursorList<TwitterList> AddListMembers(long listId, string userId);	
+
+		TwitterCursorList<TwitterList> AddListMembersByScreenName(long listId, string screenName);	
+
+		TwitterCursorList<TwitterList> AddListMembers(string slug, int ownerId, string userId);	
+
+		TwitterCursorList<TwitterList> AddListMembersByScreenName(string slug, int ownerId, string screenName);	
+
+		TwitterCursorList<TwitterList> AddListMembers(string slug, string ownerScreenName, string userId);	
+
+		TwitterCursorList<TwitterList> AddListMembersByScreenName(string slug, string ownerScreenName, string screenName);	
+
+		TwitterUser VerifyListMembership(long listId, int userId);	
+
+		TwitterUser VerifyListMembership(long listId, int userId, bool skipStatus);	
+
+		TwitterUser VerifyListMembership(long listId, string screenName);	
+
+		TwitterUser VerifyListMembership(long listId, string screenName, bool skipStatus);	
+
+		TwitterUser VerifyListMembership(string slug, int ownerId, int userId);	
+
+		TwitterUser VerifyListMembership(string slug, int ownerId, int userId, bool skipStatus);	
+
+		TwitterUser VerifyListMembership(string slug, int ownerId, string screenName);	
+
+		TwitterUser VerifyListMembership(string slug, int ownerId, string screenName, bool skipStatus);	
+
+		TwitterUser VerifyListMembership(string slug, string ownerScreenName, int userId);	
+
+		TwitterUser VerifyListMembership(string slug, string ownerScreenName, int userId, bool skipStatus);	
+
+		TwitterUser VerifyListMembership(string slug, string ownerScreenName, string screenName);	
+
+		TwitterUser VerifyListMembership(string slug, string ownerScreenName, string screenName, bool skipStatus);	
+
+		IEnumerable<TwitterList> ListListSubscriptions();	
+
+		IEnumerable<TwitterList> ListListSubscriptionsFor(int userId);	
+
+		IEnumerable<TwitterList> ListListSubscriptionsFor(string screenName);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(long listId);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(long listId, long cursor);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(long listId, bool skipStatus);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(long listId, bool skipStatus, long cursor);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(string slug, int ownerId);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(string slug, int ownerId, long cursor);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(string slug, string ownerScreenName, bool skipStatus);	
+
+		TwitterCursorList<TwitterUser> ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, long cursor);	
+
+		TwitterUser FollowList(long listId);	
+
+		TwitterUser FollowList(string slug, int ownerId);	
+
+		TwitterUser FollowList(string slug, string ownerScreenName);	
+
+		TwitterUser UnfollowList(long listId);	
+
+		TwitterUser UnfollowList(string slug, int ownerId);	
+
+		TwitterUser UnfollowList(string slug, string ownerScreenName);	
+
+		TwitterUser VerifyListSubscription(long listId, int userId);	
+
+		TwitterUser VerifyListSubscription(long listId, int userId, bool skipStatus);	
+
+		TwitterUser VerifyListSubscription(long listId, string screenName);	
+
+		TwitterUser VerifyListSubscription(long listId, string screenName, bool skipStatus);	
+
+		TwitterUser VerifyListSubscription(string slug, int ownerId, int userId);	
+
+		TwitterUser VerifyListSubscription(string slug, int ownerId, int userId, bool skipStatus);	
+
+		TwitterUser VerifyListSubscription(string slug, int ownerId, string screenName);	
+
+		TwitterUser VerifyListSubscription(string slug, int ownerId, string screenName, bool skipStatus);	
+
+		TwitterUser VerifyListSubscription(string slug, string ownerScreenName, int userId);	
+
+		TwitterUser VerifyListSubscription(string slug, string ownerScreenName, int userId, bool skipStatus);	
+
+		TwitterUser VerifyListSubscription(string slug, string ownerScreenName, string screenName);	
+
+		TwitterUser VerifyListSubscription(string slug, string ownerScreenName, string screenName, bool skipStatus);	
 
 		TwitterUser FollowUserNotifications(string screenName);	
 
@@ -493,9 +747,9 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> ListRetweetsOfMyTweetsBefore(long maxId, int page, int count);	
 
-		TwitterTrends ListCurrentTrends();	
+		TwitterCurrentTrends ListCurrentTrends(int woeid);	
 
-		TwitterTrends ListCurrentTrends(string exclude);	
+		TwitterCurrentTrends ListCurrentTrends(string exclude, int woeid);	
 
 		TwitterTrends ListDailyTrends();	
 
@@ -738,59 +992,313 @@ namespace TweetSharp
 
 		IAsyncResult GetFriendshipInfo(int sourceId, int targetId, Action<TwitterFriendship, TwitterResponse> action);		
 
-		IAsyncResult CreateList(string listOwner, string name, Action<TwitterList, TwitterResponse> action);		
+		IAsyncResult CreateList(string name, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult CreateList(string listOwner, string name, string description, Action<TwitterList, TwitterResponse> action);		
+		IAsyncResult CreateList(string name, string description, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult CreateList(string listOwner, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);		
+		IAsyncResult CreateList(string name, string description, string mode, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListListsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+		IAsyncResult UpdateList(long listId, string name, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult GetList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action);		
+		IAsyncResult UpdateList(long listId, string name, string description, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult DeleteList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action);		
+		IAsyncResult UpdateList(long listId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnList(string listOwner, string idOrSlug, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult UpdateList(string slug, int ownerId, string name, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnList(string listOwner, string idOrSlug, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult UpdateList(string slug, int ownerId, string name, string description, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnList(string listOwner, string idOrSlug, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult UpdateList(string slug, int ownerId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult UpdateList(string slug, string ownerScreenName, string name, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult UpdateList(string slug, string ownerScreenName, string name, string description, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult UpdateList(string slug, string ownerScreenName, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult ListLists(Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult ListLists(long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+		IAsyncResult ListListsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
 
-		IAsyncResult ListListMembershipsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+		IAsyncResult ListListsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
 
-		IAsyncResult ListListMembers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+		IAsyncResult ListListsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
 
-		IAsyncResult AddListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);		
+		IAsyncResult ListListsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
 
-		IAsyncResult RemoveListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);		
+		IAsyncResult GetList(int userId, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult AddListMembers(string listOwner, string listIdOrSlug, long userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+		IAsyncResult GetList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult AddListMembers(string listOwner, string listIdOrSlug, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+		IAsyncResult GetList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult VerifyListMembership(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);		
+		IAsyncResult DeleteList(long listId, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListListSubscriptionsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+		IAsyncResult DeleteList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult ListListSubscribers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+		IAsyncResult DeleteList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action);		
 
-		IAsyncResult FollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action);		
+		IAsyncResult ListTweetsOnList(long listId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
-		IAsyncResult UnfollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action);		
+		IAsyncResult ListTweetsOnList(long listId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
-		IAsyncResult VerifyListSubscription(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);		
+		IAsyncResult ListTweetsOnList(long listId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(long listId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(long listId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, int ownerId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, int ownerId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, int ownerId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, int ownerId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, int ownerId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, int ownerId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(long listId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(long listId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(long listId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(long listId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(long listId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(long listId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(long listId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(long listId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(long listId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(long listId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
+
+		IAsyncResult ListListMemberships(Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(int userId, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(int userId, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(string screenName, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembershipsFor(string screenName, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListMembers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult AddListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult AddListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult AddListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult AddListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult AddListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult AddListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult RemoveListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult RemoveListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult RemoveListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult RemoveListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult RemoveListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult RemoveListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult AddListMembers(long listId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult AddListMembersByScreenName(long listId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult AddListMembers(string slug, int ownerId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult AddListMembersByScreenName(string slug, int ownerId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult AddListMembers(string slug, string ownerScreenName, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult AddListMembersByScreenName(string slug, string ownerScreenName, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(long listId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListMembership(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscriptions(Action<IEnumerable<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscriptionsFor(int userId, Action<IEnumerable<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscriptionsFor(string screenName, Action<IEnumerable<TwitterList>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
+
+		IAsyncResult FollowList(long listId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult FollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult FollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult UnfollowList(long listId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult UnfollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult UnfollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(long listId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);		
 
 		IAsyncResult FollowUserNotifications(string screenName, Action<TwitterUser, TwitterResponse> action);		
 
@@ -1084,9 +1592,9 @@ namespace TweetSharp
 
 		IAsyncResult ListRetweetsOfMyTweetsBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
-		IAsyncResult ListCurrentTrends(Action<TwitterTrends, TwitterResponse> action);		
+		IAsyncResult ListCurrentTrends(int woeid, Action<TwitterCurrentTrends, TwitterResponse> action);		
 
-		IAsyncResult ListCurrentTrends(string exclude, Action<TwitterTrends, TwitterResponse> action);		
+		IAsyncResult ListCurrentTrends(string exclude, int woeid, Action<TwitterCurrentTrends, TwitterResponse> action);		
 
 		IAsyncResult ListDailyTrends(Action<TwitterTrends, TwitterResponse> action);		
 
@@ -1391,6 +1899,18 @@ namespace TweetSharp
 
 		TwitterList EndCreateList(IAsyncResult result, TimeSpan timeout);
 
+		IAsyncResult BeginUpdateList();
+
+		TwitterList EndUpdateList(IAsyncResult result);		
+
+		TwitterList EndUpdateList(IAsyncResult result, TimeSpan timeout);
+
+		IAsyncResult BeginListLists();
+
+		TwitterCursorList<TwitterList> EndListLists(IAsyncResult result);		
+
+		TwitterCursorList<TwitterList> EndListLists(IAsyncResult result, TimeSpan timeout);
+
 		IAsyncResult BeginListListsFor();
 
 		TwitterCursorList<TwitterList> EndListListsFor(IAsyncResult result);		
@@ -1427,6 +1947,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> EndListTweetsOnListBefore(IAsyncResult result, TimeSpan timeout);
 
+		IAsyncResult BeginListListMemberships();
+
+		TwitterCursorList<TwitterList> EndListListMemberships(IAsyncResult result);		
+
+		TwitterCursorList<TwitterList> EndListListMemberships(IAsyncResult result, TimeSpan timeout);
+
 		IAsyncResult BeginListListMembershipsFor();
 
 		TwitterCursorList<TwitterList> EndListListMembershipsFor(IAsyncResult result);		
@@ -1457,17 +1983,29 @@ namespace TweetSharp
 
 		TwitterCursorList<TwitterList> EndAddListMembers(IAsyncResult result, TimeSpan timeout);
 
+		IAsyncResult BeginAddListMembersByScreenName();
+
+		TwitterCursorList<TwitterList> EndAddListMembersByScreenName(IAsyncResult result);		
+
+		TwitterCursorList<TwitterList> EndAddListMembersByScreenName(IAsyncResult result, TimeSpan timeout);
+
 		IAsyncResult BeginVerifyListMembership();
 
 		TwitterUser EndVerifyListMembership(IAsyncResult result);		
 
 		TwitterUser EndVerifyListMembership(IAsyncResult result, TimeSpan timeout);
 
+		IAsyncResult BeginListListSubscriptions();
+
+		IEnumerable<TwitterList> EndListListSubscriptions(IAsyncResult result);		
+
+		IEnumerable<TwitterList> EndListListSubscriptions(IAsyncResult result, TimeSpan timeout);
+
 		IAsyncResult BeginListListSubscriptionsFor();
 
-		TwitterCursorList<TwitterList> EndListListSubscriptionsFor(IAsyncResult result);		
+		IEnumerable<TwitterList> EndListListSubscriptionsFor(IAsyncResult result);		
 
-		TwitterCursorList<TwitterList> EndListListSubscriptionsFor(IAsyncResult result, TimeSpan timeout);
+		IEnumerable<TwitterList> EndListListSubscriptionsFor(IAsyncResult result, TimeSpan timeout);
 
 		IAsyncResult BeginListListSubscribers();
 
@@ -1705,9 +2243,9 @@ namespace TweetSharp
 
 		IAsyncResult BeginListCurrentTrends();
 
-		TwitterTrends EndListCurrentTrends(IAsyncResult result);		
+		TwitterCurrentTrends EndListCurrentTrends(IAsyncResult result);		
 
-		TwitterTrends EndListCurrentTrends(IAsyncResult result, TimeSpan timeout);
+		TwitterCurrentTrends EndListCurrentTrends(IAsyncResult result, TimeSpan timeout);
 
 		IAsyncResult BeginListDailyTrends();
 
@@ -1982,59 +2520,313 @@ namespace TweetSharp
 
 		void GetFriendshipInfo(int sourceId, int targetId, Action<TwitterFriendship, TwitterResponse> action);
 
-		void CreateList(string listOwner, string name, Action<TwitterList, TwitterResponse> action);
+		void CreateList(string name, Action<TwitterList, TwitterResponse> action);
 
-		void CreateList(string listOwner, string name, string description, Action<TwitterList, TwitterResponse> action);
+		void CreateList(string name, string description, Action<TwitterList, TwitterResponse> action);
 
-		void CreateList(string listOwner, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);
+		void CreateList(string name, string description, string mode, Action<TwitterList, TwitterResponse> action);
 
-		void ListListsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+		void UpdateList(long listId, string name, Action<TwitterList, TwitterResponse> action);
 
-		void GetList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action);
+		void UpdateList(long listId, string name, string description, Action<TwitterList, TwitterResponse> action);
 
-		void DeleteList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action);
+		void UpdateList(long listId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);
 
-		void ListTweetsOnList(string listOwner, string idOrSlug, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void UpdateList(string slug, int ownerId, string name, Action<TwitterList, TwitterResponse> action);
 
-		void ListTweetsOnList(string listOwner, string idOrSlug, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void UpdateList(string slug, int ownerId, string name, string description, Action<TwitterList, TwitterResponse> action);
 
-		void ListTweetsOnList(string listOwner, string idOrSlug, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void UpdateList(string slug, int ownerId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);
 
-		void ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void UpdateList(string slug, string ownerScreenName, string name, Action<TwitterList, TwitterResponse> action);
 
-		void ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void UpdateList(string slug, string ownerScreenName, string name, string description, Action<TwitterList, TwitterResponse> action);
 
-		void ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void UpdateList(string slug, string ownerScreenName, string name, string description, string mode, Action<TwitterList, TwitterResponse> action);
 
-		void ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void ListLists(Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
 
-		void ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void ListLists(long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
 
-		void ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+		void ListListsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
 
-		void ListListMembershipsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+		void ListListsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
 
-		void ListListMembers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+		void ListListsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
 
-		void AddListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);
+		void ListListsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
 
-		void RemoveListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);
+		void GetList(int userId, Action<TwitterList, TwitterResponse> action);
 
-		void AddListMembers(string listOwner, string listIdOrSlug, long userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+		void GetList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action);
 
-		void AddListMembers(string listOwner, string listIdOrSlug, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+		void GetList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action);
 
-		void VerifyListMembership(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);
+		void DeleteList(long listId, Action<TwitterList, TwitterResponse> action);
 
-		void ListListSubscriptionsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+		void DeleteList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action);
 
-		void ListListSubscribers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+		void DeleteList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action);
 
-		void FollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action);
+		void ListTweetsOnList(long listId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
-		void UnfollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action);
+		void ListTweetsOnList(long listId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
-		void VerifyListSubscription(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action);
+		void ListTweetsOnList(long listId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(long listId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(long listId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, int ownerId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, int ownerId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, int ownerId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, int ownerId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, int ownerId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, int ownerId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, string ownerScreenName, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, string ownerScreenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, string ownerScreenName, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, string ownerScreenName, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(long listId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(long listId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(long listId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(long listId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(long listId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, int ownerId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, int ownerId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(long listId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(long listId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(long listId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(long listId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(long listId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, int ownerId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, int ownerId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
+
+		void ListListMemberships(Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(int userId, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(int userId, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(string screenName, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembershipsFor(string screenName, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void ListListMembers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListMembers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListMembers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListMembers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListMembers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListMembers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListMembers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListMembers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void AddListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void AddListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void AddListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void AddListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void AddListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void AddListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void RemoveListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void RemoveListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void RemoveListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void RemoveListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void RemoveListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void RemoveListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void AddListMembers(long listId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void AddListMembersByScreenName(long listId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void AddListMembers(string slug, int ownerId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void AddListMembersByScreenName(string slug, int ownerId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void AddListMembers(string slug, string ownerScreenName, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void AddListMembersByScreenName(string slug, string ownerScreenName, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action);
+
+		void VerifyListMembership(long listId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListMembership(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void ListListSubscriptions(Action<IEnumerable<TwitterList>, TwitterResponse> action);
+
+		void ListListSubscriptionsFor(int userId, Action<IEnumerable<TwitterList>, TwitterResponse> action);
+
+		void ListListSubscriptionsFor(string screenName, Action<IEnumerable<TwitterList>, TwitterResponse> action);
+
+		void ListListSubscribers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListSubscribers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListSubscribers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListSubscribers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListSubscribers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListSubscribers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
+
+		void FollowList(long listId, Action<TwitterUser, TwitterResponse> action);
+
+		void FollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action);
+
+		void FollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action);
+
+		void UnfollowList(long listId, Action<TwitterUser, TwitterResponse> action);
+
+		void UnfollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action);
+
+		void UnfollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(long listId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(long listId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action);
+
+		void VerifyListSubscription(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action);
 
 		void FollowUserNotifications(string screenName, Action<TwitterUser, TwitterResponse> action);
 
@@ -2328,9 +3120,9 @@ namespace TweetSharp
 
 		void ListRetweetsOfMyTweetsBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
-		void ListCurrentTrends(Action<TwitterTrends, TwitterResponse> action);
+		void ListCurrentTrends(int woeid, Action<TwitterCurrentTrends, TwitterResponse> action);
 
-		void ListCurrentTrends(string exclude, Action<TwitterTrends, TwitterResponse> action);
+		void ListCurrentTrends(string exclude, int woeid, Action<TwitterCurrentTrends, TwitterResponse> action);
 
 		void ListDailyTrends(Action<TwitterTrends, TwitterResponse> action);
 
@@ -2785,139 +3577,774 @@ namespace TweetSharp
 			return WithHammock<TwitterFriendship>("friendships/show", FormatAsString, "?source_id=", sourceId, "&target_id=", targetId);
 		}
 
-		public virtual TwitterList CreateList(string listOwner, string name)
+		public virtual TwitterList CreateList(string name)
 		{
-			return WithHammock<TwitterList>(WebMethod.Post, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/create", FormatAsString, "?name=", name);
 		}
 
-		public virtual TwitterList CreateList(string listOwner, string name, string description)
+		public virtual TwitterList CreateList(string name, string description)
 		{
-			return WithHammock<TwitterList>(WebMethod.Post, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/create", FormatAsString, "?name=", name, "&description=", description);
 		}
 
-		public virtual TwitterList CreateList(string listOwner, string name, string description, string mode)
+		public virtual TwitterList CreateList(string name, string description, string mode)
 		{
-			return WithHammock<TwitterList>(WebMethod.Post, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description, "&mode=", mode);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/create", FormatAsString, "?name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual TwitterCursorList<TwitterList> ListListsFor(string listOwner)
+		public virtual TwitterList UpdateList(long listId, string name)
 		{
-			return WithHammock<TwitterCursorList<TwitterList>>("{list_owner}/lists", FormatAsString, "?list_owner=", listOwner);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name);
 		}
 
-		public virtual TwitterList GetList(string listOwner, string idOrSlug)
+		public virtual TwitterList UpdateList(long listId, string name, string description)
 		{
-			return WithHammock<TwitterList>("{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description);
 		}
 
-		public virtual TwitterList DeleteList(string listOwner, string idOrSlug)
+		public virtual TwitterList UpdateList(long listId, string name, string description, string mode)
 		{
-			return WithHammock<TwitterList>(WebMethod.Delete, "{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string listOwner, string idOrSlug)
+		public virtual TwitterList UpdateList(string slug, int ownerId, string name)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string listOwner, string idOrSlug, int perPage)
+		public virtual TwitterList UpdateList(string slug, int ownerId, string name, string description)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&per_page=", perPage);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string listOwner, string idOrSlug, int page, int perPage)
+		public virtual TwitterList UpdateList(string slug, int ownerId, string name, string description, string mode)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&page=", page, "&per_page=", perPage);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId)
+		public virtual TwitterList UpdateList(string slug, string ownerScreenName, string name)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int perPage)
+		public virtual TwitterList UpdateList(string slug, string ownerScreenName, string name, string description)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&per_page=", perPage);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int page, int perPage)
+		public virtual TwitterList UpdateList(string slug, string ownerScreenName, string name, string description, string mode)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId)
+		public virtual TwitterCursorList<TwitterList> ListLists()
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId);
+			return WithHammock<TwitterCursorList<TwitterList>>("lists", FormatAsString);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int perPage)
+		public virtual TwitterCursorList<TwitterList> ListLists(long cursor)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&per_page=", perPage);
+			return WithHammock<TwitterCursorList<TwitterList>>("lists", FormatAsString, "?cursor=", cursor);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int page, int perPage)
+		public virtual TwitterCursorList<TwitterList> ListListsFor(int userId)
 		{
-			return WithHammock<IEnumerable<TwitterStatus>>("{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+			return WithHammock<TwitterCursorList<TwitterList>>("lists", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(string listOwner)
+		public virtual TwitterCursorList<TwitterList> ListListsFor(int userId, long cursor)
 		{
-			return WithHammock<TwitterCursorList<TwitterList>>("{list_owner}/lists/memberships", FormatAsString, "?list_owner=", listOwner);
+			return WithHammock<TwitterCursorList<TwitterList>>("lists", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
 		}
 
-		public virtual TwitterCursorList<TwitterUser> ListListMembers(string listOwner, string idOrSlug)
+		public virtual TwitterCursorList<TwitterList> ListListsFor(string screenName)
 		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock<TwitterCursorList<TwitterList>>("lists", FormatAsString, "?screen_name=", screenName);
 		}
 
-		public virtual TwitterUser AddListMember(string listOwner, string listIdOrSlug, long id)
+		public virtual TwitterCursorList<TwitterList> ListListsFor(string screenName, long cursor)
 		{
-			return WithHammock<TwitterUser>(WebMethod.Post, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock<TwitterCursorList<TwitterList>>("lists", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
 		}
 
-		public virtual TwitterUser RemoveListMember(string listOwner, string listIdOrSlug, long id)
+		public virtual TwitterList GetList(int userId)
 		{
-			return WithHammock<TwitterUser>(WebMethod.Delete, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock<TwitterList>("lists/show", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual TwitterCursorList<TwitterList> AddListMembers(string listOwner, string listIdOrSlug, long userId)
+		public virtual TwitterList GetList(string slug, int ownerId)
 		{
-			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&user_id=", userId);
+			return WithHammock<TwitterList>("lists/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual TwitterCursorList<TwitterList> AddListMembers(string listOwner, string listIdOrSlug, string screenName)
+		public virtual TwitterList GetList(string slug, string ownerScreenName)
 		{
-			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&screen_name=", screenName);
+			return WithHammock<TwitterList>("lists/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual TwitterUser VerifyListMembership(string listOwner, string listIdOrSlug, long id)
+		public virtual TwitterList DeleteList(long listId)
 		{
-			return WithHammock<TwitterUser>("{list_owner}/{id_or_slug}/members/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/destroy", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual TwitterCursorList<TwitterList> ListListSubscriptionsFor(string listOwner)
+		public virtual TwitterList DeleteList(string slug, int ownerId)
 		{
-			return WithHammock<TwitterCursorList<TwitterList>>("{list_owner}/lists/subscriptions", FormatAsString, "?list_owner=", listOwner);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(string listOwner, string idOrSlug)
+		public virtual TwitterList DeleteList(string slug, string ownerScreenName)
 		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock<TwitterList>(WebMethod.Post, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual TwitterUser FollowList(string listOwner, string idOrSlug)
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(long listId)
 		{
-			return WithHammock<TwitterUser>(WebMethod.Post, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual TwitterUser UnfollowList(string listOwner, string idOrSlug)
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(long listId, bool includeRts)
 		{
-			return WithHammock<TwitterUser>(WebMethod.Delete, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&include_rts=", includeRts);
 		}
 
-		public virtual TwitterUser VerifyListSubscription(string listOwner, string listIdOrSlug, long id)
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int perPage)
 		{
-			return WithHammock<TwitterUser>("{list_owner}/{id_or_slug}/subscribers/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(long listId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, int ownerId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, long sinceId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(long listId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, long maxId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(long listId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IEnumerable<TwitterStatus> ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts)
+		{
+			return WithHammock<IEnumerable<TwitterStatus>>("lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMemberships()
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(int userId)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(int userId, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(int userId, bool filterToOwnedLists)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(int userId, bool filterToOwnedLists, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName, bool filterToOwnedLists)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(string screenName, bool filterToOwnedLists, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>("lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(long listId)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(long listId, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(long listId, bool skipStatus)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(long listId, bool skipStatus, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(string slug, int ownerId)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(string slug, int ownerId, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(string slug, string ownerScreenName, bool skipStatus)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListMembers(string slug, string ownerScreenName, bool skipStatus, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual TwitterUser AddListMember(long listId, int userId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser AddListMember(string slug, int ownerId, int userId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser AddListMember(string slug, string ownerScreenName, int userId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser AddListMember(long listId, string screenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser AddListMember(string slug, int ownerId, string screenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser AddListMember(string slug, string ownerScreenName, string screenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser RemoveListMember(long listId, int userId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser RemoveListMember(string slug, int ownerId, int userId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser RemoveListMember(string slug, string ownerScreenName, int userId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser RemoveListMember(long listId, string screenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser RemoveListMember(string slug, int ownerId, string screenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser RemoveListMember(string slug, string ownerScreenName, string screenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterCursorList<TwitterList> AddListMembers(long listId, string userId)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual TwitterCursorList<TwitterList> AddListMembersByScreenName(long listId, string screenName)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterCursorList<TwitterList> AddListMembers(string slug, int ownerId, string userId)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual TwitterCursorList<TwitterList> AddListMembersByScreenName(string slug, int ownerId, string screenName)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterCursorList<TwitterList> AddListMembers(string slug, string ownerScreenName, string userId)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual TwitterCursorList<TwitterList> AddListMembersByScreenName(string slug, string ownerScreenName, string screenName)
+		{
+			return WithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser VerifyListMembership(long listId, int userId)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser VerifyListMembership(long listId, int userId, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListMembership(long listId, string screenName)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser VerifyListMembership(long listId, string screenName, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, int ownerId, int userId)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, int ownerId, int userId, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, int ownerId, string screenName)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, int ownerId, string screenName, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, string ownerScreenName, int userId)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, string ownerScreenName, int userId, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, string ownerScreenName, string screenName)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser VerifyListMembership(string slug, string ownerScreenName, string screenName, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IEnumerable<TwitterList> ListListSubscriptions()
+		{
+			return WithHammock<IEnumerable<TwitterList>>("lists/all", FormatAsString);
+		}
+
+		public virtual IEnumerable<TwitterList> ListListSubscriptionsFor(int userId)
+		{
+			return WithHammock<IEnumerable<TwitterList>>("lists/all", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual IEnumerable<TwitterList> ListListSubscriptionsFor(string screenName)
+		{
+			return WithHammock<IEnumerable<TwitterList>>("lists/all", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(long listId)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(long listId, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(long listId, bool skipStatus)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(long listId, bool skipStatus, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(string slug, int ownerId)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(string slug, int ownerId, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(string slug, string ownerScreenName, bool skipStatus)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, long cursor)
+		{
+			return WithHammock<TwitterCursorList<TwitterUser>>("lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual TwitterUser FollowList(long listId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual TwitterUser FollowList(string slug, int ownerId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual TwitterUser FollowList(string slug, string ownerScreenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual TwitterUser UnfollowList(long listId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/destroy", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual TwitterUser UnfollowList(string slug, int ownerId)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual TwitterUser UnfollowList(string slug, string ownerScreenName)
+		{
+			return WithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(long listId, int userId)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(long listId, int userId, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(long listId, string screenName)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(long listId, string screenName, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, int ownerId, int userId)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, int ownerId, int userId, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, int ownerId, string screenName)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, int ownerId, string screenName, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, string ownerScreenName, int userId)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, string ownerScreenName, int userId, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, string ownerScreenName, string screenName)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual TwitterUser VerifyListSubscription(string slug, string ownerScreenName, string screenName, bool skipStatus)
+		{
+			return WithHammock<TwitterUser>("lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
 		}
 
 		public virtual TwitterUser FollowUserNotifications(string screenName)
@@ -3650,14 +5077,14 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/retweets_of_me", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
-		public virtual TwitterTrends ListCurrentTrends()
+		public virtual TwitterCurrentTrends ListCurrentTrends(int woeid)
 		{
-			return WithHammock<TwitterTrends>("trends/current", FormatAsString);
+			return WithHammock<TwitterCurrentTrends>("trends/{woeid}", FormatAsString, "?woeid=", woeid);
 		}
 
-		public virtual TwitterTrends ListCurrentTrends(string exclude)
+		public virtual TwitterCurrentTrends ListCurrentTrends(string exclude, int woeid)
 		{
-			return WithHammock<TwitterTrends>("trends/current", FormatAsString, "?exclude=", exclude);
+			return WithHammock<TwitterCurrentTrends>("trends/{woeid}", FormatAsString, "?exclude=", exclude, "&woeid=", woeid);
 		}
 
 		public virtual TwitterTrends ListDailyTrends()
@@ -4255,139 +5682,774 @@ namespace TweetSharp
 			return WithHammock(action, "friendships/show", FormatAsString, "?source_id=", sourceId, "&target_id=", targetId);
 		}
 
-		public virtual IAsyncResult CreateList(string listOwner, string name, Action<TwitterList, TwitterResponse> action)
+		public virtual IAsyncResult CreateList(string name, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Post, action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name);
+			return WithHammock(WebMethod.Post, action, "lists/create", FormatAsString, "?name=", name);
 		}
 
-		public virtual IAsyncResult CreateList(string listOwner, string name, string description, Action<TwitterList, TwitterResponse> action)
+		public virtual IAsyncResult CreateList(string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Post, action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description);
+			return WithHammock(WebMethod.Post, action, "lists/create", FormatAsString, "?name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult CreateList(string listOwner, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
+		public virtual IAsyncResult CreateList(string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Post, action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description, "&mode=", mode);
+			return WithHammock(WebMethod.Post, action, "lists/create", FormatAsString, "?name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult ListListsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(long listId, string name, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name);
 		}
 
-		public virtual IAsyncResult GetList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(long listId, string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult DeleteList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(long listId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Delete, action, "{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult ListTweetsOnList(string listOwner, string idOrSlug, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(string slug, int ownerId, string name, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name);
 		}
 
-		public virtual IAsyncResult ListTweetsOnList(string listOwner, string idOrSlug, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(string slug, int ownerId, string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&per_page=", perPage);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult ListTweetsOnList(string listOwner, string idOrSlug, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(string slug, int ownerId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&page=", page, "&per_page=", perPage);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(string slug, string ownerScreenName, string name, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name);
 		}
 
-		public virtual IAsyncResult ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(string slug, string ownerScreenName, string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&per_page=", perPage);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult UpdateList(string slug, string ownerScreenName, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+			return WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult ListLists(Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId);
+			return WithHammock(action, "lists", FormatAsString);
 		}
 
-		public virtual IAsyncResult ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult ListLists(long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&per_page=", perPage);
+			return WithHammock(action, "lists", FormatAsString, "?cursor=", cursor);
 		}
 
-		public virtual IAsyncResult ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual IAsyncResult ListListsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+			return WithHammock(action, "lists", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual IAsyncResult ListListMembershipsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual IAsyncResult ListListsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/memberships", FormatAsString, "?list_owner=", listOwner);
+			return WithHammock(action, "lists", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
 		}
 
-		public virtual IAsyncResult ListListMembers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		public virtual IAsyncResult ListListsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock(action, "lists", FormatAsString, "?screen_name=", screenName);
 		}
 
-		public virtual IAsyncResult AddListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual IAsyncResult ListListsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock(action, "lists", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
 		}
 
-		public virtual IAsyncResult RemoveListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual IAsyncResult GetList(int userId, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Delete, action, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock(action, "lists/show", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual IAsyncResult AddListMembers(string listOwner, string listIdOrSlug, long userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual IAsyncResult GetList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&user_id=", userId);
+			return WithHammock(action, "lists/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual IAsyncResult AddListMembers(string listOwner, string listIdOrSlug, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual IAsyncResult GetList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&screen_name=", screenName);
+			return WithHammock(action, "lists/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual IAsyncResult VerifyListMembership(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual IAsyncResult DeleteList(long listId, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/{id_or_slug}/members/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock(WebMethod.Post, action, "lists/destroy", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual IAsyncResult ListListSubscriptionsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual IAsyncResult DeleteList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/lists/subscriptions", FormatAsString, "?list_owner=", listOwner);
+			return WithHammock(WebMethod.Post, action, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual IAsyncResult ListListSubscribers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		public virtual IAsyncResult DeleteList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock(WebMethod.Post, action, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual IAsyncResult FollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action)
+		public virtual IAsyncResult ListTweetsOnList(long listId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual IAsyncResult UnfollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action)
+		public virtual IAsyncResult ListTweetsOnList(long listId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
-			return WithHammock(WebMethod.Delete, action, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&include_rts=", includeRts);
 		}
 
-		public virtual IAsyncResult VerifyListSubscription(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual IAsyncResult ListTweetsOnList(long listId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
-			return WithHammock(action, "{list_owner}/{id_or_slug}/subscribers/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(long listId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(long listId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, int ownerId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, int ownerId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, int ownerId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, int ownerId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, int ownerId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, int ownerId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(long listId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(long listId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(long listId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(long listId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(long listId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(long listId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(long listId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(long listId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(long listId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(long listId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult ListListMemberships(Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(int userId, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(int userId, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(string screenName, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual IAsyncResult ListListMembershipsFor(string screenName, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListMembers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult ListListMembers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListMembers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult ListListMembers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListMembers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult ListListMembers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListMembers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult ListListMembers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult AddListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult AddListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult AddListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult AddListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult AddListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult AddListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult RemoveListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult RemoveListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult RemoveListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult RemoveListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult RemoveListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult RemoveListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult AddListMembers(long listId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult AddListMembersByScreenName(long listId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult AddListMembers(string slug, int ownerId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult AddListMembersByScreenName(string slug, int ownerId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult AddListMembers(string slug, string ownerScreenName, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult AddListMembersByScreenName(string slug, string ownerScreenName, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult VerifyListMembership(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult ListListSubscriptions(Action<IEnumerable<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/all", FormatAsString);
+		}
+
+		public virtual IAsyncResult ListListSubscriptionsFor(int userId, Action<IEnumerable<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/all", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual IAsyncResult ListListSubscriptionsFor(string screenName, Action<IEnumerable<TwitterList>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/all", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult FollowList(long listId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult FollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult FollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual IAsyncResult UnfollowList(long listId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/subscribers/destroy", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult UnfollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult UnfollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult VerifyListSubscription(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			return WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
 		}
 
 		public virtual IAsyncResult FollowUserNotifications(string screenName, Action<TwitterUser, TwitterResponse> action)
@@ -5120,14 +7182,14 @@ namespace TweetSharp
 			return WithHammock(action, "statuses/retweets_of_me", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
-		public virtual IAsyncResult ListCurrentTrends(Action<TwitterTrends, TwitterResponse> action)
+		public virtual IAsyncResult ListCurrentTrends(int woeid, Action<TwitterCurrentTrends, TwitterResponse> action)
 		{
-			return WithHammock(action, "trends/current", FormatAsString);
+			return WithHammock(action, "trends/{woeid}", FormatAsString, "?woeid=", woeid);
 		}
 
-		public virtual IAsyncResult ListCurrentTrends(string exclude, Action<TwitterTrends, TwitterResponse> action)
+		public virtual IAsyncResult ListCurrentTrends(string exclude, int woeid, Action<TwitterCurrentTrends, TwitterResponse> action)
 		{
-			return WithHammock(action, "trends/current", FormatAsString, "?exclude=", exclude);
+			return WithHammock(action, "trends/{woeid}", FormatAsString, "?exclude=", exclude, "&woeid=", woeid);
 		}
 
 		public virtual IAsyncResult ListDailyTrends(Action<TwitterTrends, TwitterResponse> action)
@@ -5725,139 +7787,774 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterFriendship>(WebMethod.Get, "friendships/show", FormatAsString, "?source_id=", sourceId, "&target_id=", targetId);
 		}
 
-		public virtual IAsyncResult BeginCreateList(string listOwner, string name)
+		public virtual IAsyncResult BeginCreateList(string name)
 		{
-			return BeginWithHammock<TwitterList>(WebMethod.Post, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/create", FormatAsString, "?name=", name);
 		}
 
-		public virtual IAsyncResult BeginCreateList(string listOwner, string name, string description)
+		public virtual IAsyncResult BeginCreateList(string name, string description)
 		{
-			return BeginWithHammock<TwitterList>(WebMethod.Post, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/create", FormatAsString, "?name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult BeginCreateList(string listOwner, string name, string description, string mode)
+		public virtual IAsyncResult BeginCreateList(string name, string description, string mode)
 		{
-			return BeginWithHammock<TwitterList>(WebMethod.Post, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description, "&mode=", mode);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/create", FormatAsString, "?name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult BeginListListsFor(string listOwner)
+		public virtual IAsyncResult BeginUpdateList(long listId, string name)
 		{
-			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name);
 		}
 
-		public virtual IAsyncResult BeginGetList(string listOwner, string idOrSlug)
+		public virtual IAsyncResult BeginUpdateList(long listId, string name, string description)
 		{
-			return BeginWithHammock<TwitterList>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult BeginDeleteList(string listOwner, string idOrSlug)
+		public virtual IAsyncResult BeginUpdateList(long listId, string name, string description, string mode)
 		{
-			return BeginWithHammock<TwitterList>(WebMethod.Delete, "{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnList(string listOwner, string idOrSlug)
+		public virtual IAsyncResult BeginUpdateList(string slug, int ownerId, string name)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnList(string listOwner, string idOrSlug, int perPage)
+		public virtual IAsyncResult BeginUpdateList(string slug, int ownerId, string name, string description)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&per_page=", perPage);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnList(string listOwner, string idOrSlug, int page, int perPage)
+		public virtual IAsyncResult BeginUpdateList(string slug, int ownerId, string name, string description, string mode)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&page=", page, "&per_page=", perPage);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId)
+		public virtual IAsyncResult BeginUpdateList(string slug, string ownerScreenName, string name)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int perPage)
+		public virtual IAsyncResult BeginUpdateList(string slug, string ownerScreenName, string name, string description)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&per_page=", perPage);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int page, int perPage)
+		public virtual IAsyncResult BeginUpdateList(string slug, string ownerScreenName, string name, string description, string mode)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId)
+		public virtual IAsyncResult BeginListLists()
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId);
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists", FormatAsString);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int perPage)
+		public virtual IAsyncResult BeginListLists(long cursor)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&per_page=", perPage);
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists", FormatAsString, "?cursor=", cursor);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int page, int perPage)
+		public virtual IAsyncResult BeginListListsFor(int userId)
 		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual IAsyncResult BeginListListMembershipsFor(string listOwner)
+		public virtual IAsyncResult BeginListListsFor(int userId, long cursor)
 		{
-			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "{list_owner}/lists/memberships", FormatAsString, "?list_owner=", listOwner);
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
 		}
 
-		public virtual IAsyncResult BeginListListMembers(string listOwner, string idOrSlug)
+		public virtual IAsyncResult BeginListListsFor(string screenName)
 		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists", FormatAsString, "?screen_name=", screenName);
 		}
 
-		public virtual IAsyncResult BeginAddListMember(string listOwner, string listIdOrSlug, long id)
+		public virtual IAsyncResult BeginListListsFor(string screenName, long cursor)
 		{
-			return BeginWithHammock<TwitterUser>(WebMethod.Post, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
 		}
 
-		public virtual IAsyncResult BeginRemoveListMember(string listOwner, string listIdOrSlug, long id)
+		public virtual IAsyncResult BeginGetList(int userId)
 		{
-			return BeginWithHammock<TwitterUser>(WebMethod.Delete, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return BeginWithHammock<TwitterList>(WebMethod.Get, "lists/show", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual IAsyncResult BeginAddListMembers(string listOwner, string listIdOrSlug, long userId)
+		public virtual IAsyncResult BeginGetList(string slug, int ownerId)
 		{
-			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&user_id=", userId);
+			return BeginWithHammock<TwitterList>(WebMethod.Get, "lists/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual IAsyncResult BeginAddListMembers(string listOwner, string listIdOrSlug, string screenName)
+		public virtual IAsyncResult BeginGetList(string slug, string ownerScreenName)
 		{
-			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&screen_name=", screenName);
+			return BeginWithHammock<TwitterList>(WebMethod.Get, "lists/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual IAsyncResult BeginVerifyListMembership(string listOwner, string listIdOrSlug, long id)
+		public virtual IAsyncResult BeginDeleteList(long listId)
 		{
-			return BeginWithHammock<TwitterUser>(WebMethod.Get, "{list_owner}/{id_or_slug}/members/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/destroy", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual IAsyncResult BeginListListSubscriptionsFor(string listOwner)
+		public virtual IAsyncResult BeginDeleteList(string slug, int ownerId)
 		{
-			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "{list_owner}/lists/subscriptions", FormatAsString, "?list_owner=", listOwner);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual IAsyncResult BeginListListSubscribers(string listOwner, string idOrSlug)
+		public virtual IAsyncResult BeginDeleteList(string slug, string ownerScreenName)
 		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return BeginWithHammock<TwitterList>(WebMethod.Post, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual IAsyncResult BeginFollowList(string listOwner, string idOrSlug)
+		public virtual IAsyncResult BeginListTweetsOnList(long listId)
 		{
-			return BeginWithHammock<TwitterUser>(WebMethod.Post, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual IAsyncResult BeginUnfollowList(string listOwner, string idOrSlug)
+		public virtual IAsyncResult BeginListTweetsOnList(long listId, bool includeRts)
 		{
-			return BeginWithHammock<TwitterUser>(WebMethod.Delete, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&include_rts=", includeRts);
 		}
 
-		public virtual IAsyncResult BeginVerifyListSubscription(string listOwner, string listIdOrSlug, long id)
+		public virtual IAsyncResult BeginListTweetsOnList(long listId, int perPage)
 		{
-			return BeginWithHammock<TwitterUser>(WebMethod.Get, "{list_owner}/{id_or_slug}/subscribers/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(long listId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(long listId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(long listId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, int ownerId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, int ownerId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, int ownerId, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, int ownerId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, int ownerId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, int ownerId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, string ownerScreenName)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, string ownerScreenName, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, string ownerScreenName, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, string ownerScreenName, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, string ownerScreenName, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(long listId, long sinceId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(long listId, long sinceId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(long listId, long sinceId, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(long listId, long sinceId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(long listId, long sinceId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(long listId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, int ownerId, long sinceId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, int ownerId, long sinceId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, string ownerScreenName, long sinceId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(long listId, long maxId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(long listId, long maxId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(long listId, long maxId, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(long listId, long maxId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(long listId, long maxId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(long listId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, int ownerId, long maxId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, int ownerId, long maxId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, string ownerScreenName, long maxId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual IAsyncResult BeginListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts)
+		{
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual IAsyncResult BeginListListMemberships()
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(int userId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(int userId, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(int userId, bool filterToOwnedLists)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(int userId, bool filterToOwnedLists, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(string screenName)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(string screenName, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(string screenName, bool filterToOwnedLists)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual IAsyncResult BeginListListMembershipsFor(string screenName, bool filterToOwnedLists, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Get, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(long listId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(long listId, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(long listId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(long listId, bool skipStatus, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(string slug, int ownerId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(string slug, int ownerId, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(string slug, string ownerScreenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginListListMembers(string slug, string ownerScreenName, bool skipStatus, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginAddListMember(long listId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginAddListMember(string slug, int ownerId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginAddListMember(string slug, string ownerScreenName, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginAddListMember(long listId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginAddListMember(string slug, int ownerId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginAddListMember(string slug, string ownerScreenName, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginRemoveListMember(long listId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginRemoveListMember(string slug, int ownerId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginRemoveListMember(string slug, string ownerScreenName, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginRemoveListMember(long listId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginRemoveListMember(string slug, int ownerId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginRemoveListMember(string slug, string ownerScreenName, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginAddListMembers(long listId, string userId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginAddListMembersByScreenName(long listId, string screenName)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginAddListMembers(string slug, int ownerId, string userId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginAddListMembersByScreenName(string slug, int ownerId, string screenName)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginAddListMembers(string slug, string ownerScreenName, string userId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginAddListMembersByScreenName(string slug, string ownerScreenName, string screenName)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterList>>(WebMethod.Post, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(long listId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(long listId, int userId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(long listId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(long listId, string screenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, int ownerId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, int ownerId, int userId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, int ownerId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, int ownerId, string screenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, string ownerScreenName, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, string ownerScreenName, int userId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, string ownerScreenName, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListMembership(string slug, string ownerScreenName, string screenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginListListSubscriptions()
+		{
+			return BeginWithHammock<IEnumerable<TwitterList>>(WebMethod.Get, "lists/all", FormatAsString);
+		}
+
+		public virtual IAsyncResult BeginListListSubscriptionsFor(int userId)
+		{
+			return BeginWithHammock<IEnumerable<TwitterList>>(WebMethod.Get, "lists/all", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginListListSubscriptionsFor(string screenName)
+		{
+			return BeginWithHammock<IEnumerable<TwitterList>>(WebMethod.Get, "lists/all", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(long listId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(long listId, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(long listId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(long listId, bool skipStatus, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(string slug, int ownerId)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(string slug, int ownerId, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(string slug, string ownerScreenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginListListSubscribers(string slug, string ownerScreenName, bool skipStatus, long cursor)
+		{
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual IAsyncResult BeginFollowList(long listId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult BeginFollowList(string slug, int ownerId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult BeginFollowList(string slug, string ownerScreenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual IAsyncResult BeginUnfollowList(long listId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/destroy", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual IAsyncResult BeginUnfollowList(string slug, int ownerId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual IAsyncResult BeginUnfollowList(string slug, string ownerScreenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Post, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(long listId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(long listId, int userId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(long listId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(long listId, string screenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, int ownerId, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, int ownerId, int userId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, int ownerId, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, int ownerId, string screenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, string ownerScreenName, int userId)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, string ownerScreenName, int userId, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, string ownerScreenName, string screenName)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual IAsyncResult BeginVerifyListSubscription(string slug, string ownerScreenName, string screenName, bool skipStatus)
+		{
+			return BeginWithHammock<TwitterUser>(WebMethod.Get, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
 		}
 
 		public virtual IAsyncResult BeginFollowUserNotifications(string screenName)
@@ -6590,14 +9287,14 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/retweets_of_me", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
-		public virtual IAsyncResult BeginListCurrentTrends()
+		public virtual IAsyncResult BeginListCurrentTrends(int woeid)
 		{
-			return BeginWithHammock<TwitterTrends>(WebMethod.Get, "trends/current", FormatAsString);
+			return BeginWithHammock<TwitterCurrentTrends>(WebMethod.Get, "trends/{woeid}", FormatAsString, "?woeid=", woeid);
 		}
 
-		public virtual IAsyncResult BeginListCurrentTrends(string exclude)
+		public virtual IAsyncResult BeginListCurrentTrends(string exclude, int woeid)
 		{
-			return BeginWithHammock<TwitterTrends>(WebMethod.Get, "trends/current", FormatAsString, "?exclude=", exclude);
+			return BeginWithHammock<TwitterCurrentTrends>(WebMethod.Get, "trends/{woeid}", FormatAsString, "?exclude=", exclude, "&woeid=", woeid);
 		}
 
 		public virtual IAsyncResult BeginListDailyTrends()
@@ -7180,6 +9877,26 @@ namespace TweetSharp
 			return EndWithHammock<TwitterList>(result, timeout);
 		}
 
+		public virtual TwitterList EndUpdateList(IAsyncResult result) 
+		{
+			return EndWithHammock<TwitterList>(result);
+		}
+
+		public virtual TwitterList EndUpdateList(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<TwitterList>(result, timeout);
+		}
+
+		public virtual TwitterCursorList<TwitterList> EndListLists(IAsyncResult result) 
+		{
+			return EndWithHammock<TwitterCursorList<TwitterList>>(result);
+		}
+
+		public virtual TwitterCursorList<TwitterList> EndListLists(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
+		}
+
 		public virtual TwitterCursorList<TwitterList> EndListListsFor(IAsyncResult result) 
 		{
 			return EndWithHammock<TwitterCursorList<TwitterList>>(result);
@@ -7240,6 +9957,16 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
 
+		public virtual TwitterCursorList<TwitterList> EndListListMemberships(IAsyncResult result) 
+		{
+			return EndWithHammock<TwitterCursorList<TwitterList>>(result);
+		}
+
+		public virtual TwitterCursorList<TwitterList> EndListListMemberships(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
+		}
+
 		public virtual TwitterCursorList<TwitterList> EndListListMembershipsFor(IAsyncResult result) 
 		{
 			return EndWithHammock<TwitterCursorList<TwitterList>>(result);
@@ -7290,6 +10017,16 @@ namespace TweetSharp
 			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
 		}
 
+		public virtual TwitterCursorList<TwitterList> EndAddListMembersByScreenName(IAsyncResult result) 
+		{
+			return EndWithHammock<TwitterCursorList<TwitterList>>(result);
+		}
+
+		public virtual TwitterCursorList<TwitterList> EndAddListMembersByScreenName(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
+		}
+
 		public virtual TwitterUser EndVerifyListMembership(IAsyncResult result) 
 		{
 			return EndWithHammock<TwitterUser>(result);
@@ -7300,14 +10037,24 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-		public virtual TwitterCursorList<TwitterList> EndListListSubscriptionsFor(IAsyncResult result) 
+		public virtual IEnumerable<TwitterList> EndListListSubscriptions(IAsyncResult result) 
 		{
-			return EndWithHammock<TwitterCursorList<TwitterList>>(result);
+			return EndWithHammock<IEnumerable<TwitterList>>(result);
 		}
 
-		public virtual TwitterCursorList<TwitterList> EndListListSubscriptionsFor(IAsyncResult result, TimeSpan timeout) 
+		public virtual IEnumerable<TwitterList> EndListListSubscriptions(IAsyncResult result, TimeSpan timeout) 
 		{
-			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
+			return EndWithHammock<IEnumerable<TwitterList>>(result, timeout);
+		}
+
+		public virtual IEnumerable<TwitterList> EndListListSubscriptionsFor(IAsyncResult result) 
+		{
+			return EndWithHammock<IEnumerable<TwitterList>>(result);
+		}
+
+		public virtual IEnumerable<TwitterList> EndListListSubscriptionsFor(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<IEnumerable<TwitterList>>(result, timeout);
 		}
 
 		public virtual TwitterCursorList<TwitterUser> EndListListSubscribers(IAsyncResult result) 
@@ -7700,14 +10447,14 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
 
-		public virtual TwitterTrends EndListCurrentTrends(IAsyncResult result) 
+		public virtual TwitterCurrentTrends EndListCurrentTrends(IAsyncResult result) 
 		{
-			return EndWithHammock<TwitterTrends>(result);
+			return EndWithHammock<TwitterCurrentTrends>(result);
 		}
 
-		public virtual TwitterTrends EndListCurrentTrends(IAsyncResult result, TimeSpan timeout) 
+		public virtual TwitterCurrentTrends EndListCurrentTrends(IAsyncResult result, TimeSpan timeout) 
 		{
-			return EndWithHammock<TwitterTrends>(result, timeout);
+			return EndWithHammock<TwitterCurrentTrends>(result, timeout);
 		}
 
 		public virtual TwitterTrends EndListDailyTrends(IAsyncResult result) 
@@ -8275,139 +11022,774 @@ namespace TweetSharp
 			WithHammock(action, "friendships/show", FormatAsString, "?source_id=", sourceId, "&target_id=", targetId);
 		}
 
-		public virtual void CreateList(string listOwner, string name, Action<TwitterList, TwitterResponse> action)
+		public virtual void CreateList(string name, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Post, action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name);
+			WithHammock(WebMethod.Post, action, "lists/create", FormatAsString, "?name=", name);
 		}
 
-		public virtual void CreateList(string listOwner, string name, string description, Action<TwitterList, TwitterResponse> action)
+		public virtual void CreateList(string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Post, action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description);
+			WithHammock(WebMethod.Post, action, "lists/create", FormatAsString, "?name=", name, "&description=", description);
 		}
 
-		public virtual void CreateList(string listOwner, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
+		public virtual void CreateList(string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Post, action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner, "&name=", name, "&description=", description, "&mode=", mode);
+			WithHammock(WebMethod.Post, action, "lists/create", FormatAsString, "?name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual void ListListsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual void UpdateList(long listId, string name, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists", FormatAsString, "?list_owner=", listOwner);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name);
 		}
 
-		public virtual void GetList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action)
+		public virtual void UpdateList(long listId, string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description);
 		}
 
-		public virtual void DeleteList(string listOwner, string idOrSlug, Action<TwitterList, TwitterResponse> action)
+		public virtual void UpdateList(long listId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Delete, action, "{list_owner}/lists/{id_or_slug}", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?list_id=", listId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual void ListTweetsOnList(string listOwner, string idOrSlug, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void UpdateList(string slug, int ownerId, string name, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name);
 		}
 
-		public virtual void ListTweetsOnList(string listOwner, string idOrSlug, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void UpdateList(string slug, int ownerId, string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&per_page=", perPage);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description);
 		}
 
-		public virtual void ListTweetsOnList(string listOwner, string idOrSlug, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void UpdateList(string slug, int ownerId, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&page=", page, "&per_page=", perPage);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual void ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void UpdateList(string slug, string ownerScreenName, string name, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name);
 		}
 
-		public virtual void ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void UpdateList(string slug, string ownerScreenName, string name, string description, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&per_page=", perPage);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description);
 		}
 
-		public virtual void ListTweetsOnListSince(string listOwner, string idOrSlug, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void UpdateList(string slug, string ownerScreenName, string name, string description, string mode, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+			WithHammock(WebMethod.Post, action, "lists/update", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&name=", name, "&description=", description, "&mode=", mode);
 		}
 
-		public virtual void ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void ListLists(Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId);
+			WithHammock(action, "lists", FormatAsString);
 		}
 
-		public virtual void ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void ListLists(long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&per_page=", perPage);
+			WithHammock(action, "lists", FormatAsString, "?cursor=", cursor);
 		}
 
-		public virtual void ListTweetsOnListBefore(string listOwner, string idOrSlug, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		public virtual void ListListsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/{id_or_slug}/statuses", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+			WithHammock(action, "lists", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual void ListListMembershipsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual void ListListsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/memberships", FormatAsString, "?list_owner=", listOwner);
+			WithHammock(action, "lists", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
 		}
 
-		public virtual void ListListMembers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		public virtual void ListListsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			WithHammock(action, "lists", FormatAsString, "?screen_name=", screenName);
 		}
 
-		public virtual void AddListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual void ListListsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			WithHammock(action, "lists", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
 		}
 
-		public virtual void RemoveListMember(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual void GetList(int userId, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Delete, action, "{list_owner}/{id_or_slug}/members", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			WithHammock(action, "lists/show", FormatAsString, "?user_id=", userId);
 		}
 
-		public virtual void AddListMembers(string listOwner, string listIdOrSlug, long userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual void GetList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&user_id=", userId);
+			WithHammock(action, "lists/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual void AddListMembers(string listOwner, string listIdOrSlug, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual void GetList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/create_all", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&screen_name=", screenName);
+			WithHammock(action, "lists/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual void VerifyListMembership(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual void DeleteList(long listId, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/{id_or_slug}/members/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			WithHammock(WebMethod.Post, action, "lists/destroy", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual void ListListSubscriptionsFor(string listOwner, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		public virtual void DeleteList(string slug, int ownerId, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/lists/subscriptions", FormatAsString, "?list_owner=", listOwner);
+			WithHammock(WebMethod.Post, action, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
 		}
 
-		public virtual void ListListSubscribers(string listOwner, string idOrSlug, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		public virtual void DeleteList(string slug, string ownerScreenName, Action<TwitterList, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			WithHammock(WebMethod.Post, action, "lists/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
 		}
 
-		public virtual void FollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action)
+		public virtual void ListTweetsOnList(long listId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Post, action, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId);
 		}
 
-		public virtual void UnfollowList(string listOwner, string idOrSlug, Action<TwitterUser, TwitterResponse> action)
+		public virtual void ListTweetsOnList(long listId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
-			WithHammock(WebMethod.Delete, action, "{list_owner}/{id_or_slug}/subscribers", FormatAsString, "?list_owner=", listOwner, "&id_or_slug=", idOrSlug);
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&include_rts=", includeRts);
 		}
 
-		public virtual void VerifyListSubscription(string listOwner, string listIdOrSlug, long id, Action<TwitterUser, TwitterResponse> action)
+		public virtual void ListTweetsOnList(long listId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
-			WithHammock(action, "{list_owner}/{id_or_slug}/subscribers/{id}", FormatAsString, "?list_owner=", listOwner, "&list_id_or_slug=", listIdOrSlug, "&id=", id);
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnList(long listId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnList(long listId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnList(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnList(string slug, int ownerId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual void ListTweetsOnList(string slug, int ownerId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnList(string slug, int ownerId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnList(string slug, int ownerId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnList(string slug, int ownerId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnList(string slug, int ownerId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnList(string slug, string ownerScreenName, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual void ListTweetsOnList(string slug, string ownerScreenName, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnList(string slug, string ownerScreenName, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnList(string slug, string ownerScreenName, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnList(string slug, string ownerScreenName, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(long listId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId);
+		}
+
+		public virtual void ListTweetsOnListSince(long listId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(long listId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListSince(long listId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(long listId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListSince(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, int ownerId, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, int ownerId, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, int ownerId, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListSince(string slug, string ownerScreenName, long sinceId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&since_id=", sinceId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(long listId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId);
+		}
+
+		public virtual void ListTweetsOnListBefore(long listId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(long listId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListBefore(long listId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(long listId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListBefore(long listId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?list_id=", listId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, int ownerId, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, int ownerId, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, int ownerId, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage);
+		}
+
+		public virtual void ListTweetsOnListBefore(string slug, string ownerScreenName, long maxId, int page, int perPage, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/statuses", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&max_id=", maxId, "&page=", page, "&per_page=", perPage, "&include_rts=", includeRts);
+		}
+
+		public virtual void ListListMemberships(Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString);
+		}
+
+		public virtual void ListListMembershipsFor(int userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual void ListListMembershipsFor(int userId, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
+		}
+
+		public virtual void ListListMembershipsFor(int userId, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual void ListListMembershipsFor(int userId, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?user_id=", userId, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual void ListListMembershipsFor(string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual void ListListMembershipsFor(string screenName, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
+		}
+
+		public virtual void ListListMembershipsFor(string screenName, bool filterToOwnedLists, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists);
+		}
+
+		public virtual void ListListMembershipsFor(string screenName, bool filterToOwnedLists, long cursor, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/memberships", FormatAsString, "?screen_name=", screenName, "&filter_to_owned_lists=", filterToOwnedLists, "&cursor=", cursor);
+		}
+
+		public virtual void ListListMembers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual void ListListMembers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual void ListListMembers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void ListListMembers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual void ListListMembers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual void ListListMembers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual void ListListMembers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual void ListListMembers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual void AddListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual void AddListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual void AddListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual void AddListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual void AddListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual void AddListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual void RemoveListMember(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual void RemoveListMember(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual void RemoveListMember(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual void RemoveListMember(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual void RemoveListMember(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual void RemoveListMember(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual void AddListMembers(long listId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual void AddListMembersByScreenName(long listId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual void AddListMembers(string slug, int ownerId, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual void AddListMembersByScreenName(string slug, int ownerId, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual void AddListMembers(string slug, string ownerScreenName, string userId, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual void AddListMembersByScreenName(string slug, string ownerScreenName, string screenName, Action<TwitterCursorList<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual void VerifyListMembership(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual void VerifyListMembership(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListMembership(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual void VerifyListMembership(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListMembership(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual void VerifyListMembership(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListMembership(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual void VerifyListMembership(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListMembership(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual void VerifyListMembership(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListMembership(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual void VerifyListMembership(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/members/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual void ListListSubscriptions(Action<IEnumerable<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/all", FormatAsString);
+		}
+
+		public virtual void ListListSubscriptionsFor(int userId, Action<IEnumerable<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/all", FormatAsString, "?user_id=", userId);
+		}
+
+		public virtual void ListListSubscriptionsFor(string screenName, Action<IEnumerable<TwitterList>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/all", FormatAsString, "?screen_name=", screenName);
+		}
+
+		public virtual void ListListSubscribers(long listId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual void ListListSubscribers(long listId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId, "&cursor=", cursor);
+		}
+
+		public virtual void ListListSubscribers(long listId, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void ListListSubscribers(long listId, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?list_id=", listId, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual void ListListSubscribers(string slug, int ownerId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual void ListListSubscribers(string slug, int ownerId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&cursor=", cursor);
+		}
+
+		public virtual void ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual void ListListSubscribers(string slug, string ownerScreenName, bool skipStatus, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&skip_status=", skipStatus, "&cursor=", cursor);
+		}
+
+		public virtual void FollowList(long listId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual void FollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual void FollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual void UnfollowList(long listId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/subscribers/destroy", FormatAsString, "?list_id=", listId);
+		}
+
+		public virtual void UnfollowList(string slug, int ownerId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_id=", ownerId);
+		}
+
+		public virtual void UnfollowList(string slug, string ownerScreenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName);
+		}
+
+		public virtual void VerifyListSubscription(long listId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId);
+		}
+
+		public virtual void VerifyListSubscription(long listId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListSubscription(long listId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName);
+		}
+
+		public virtual void VerifyListSubscription(long listId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?list_id=", listId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListSubscription(string slug, int ownerId, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId);
+		}
+
+		public virtual void VerifyListSubscription(string slug, int ownerId, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListSubscription(string slug, int ownerId, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName);
+		}
+
+		public virtual void VerifyListSubscription(string slug, int ownerId, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_id=", ownerId, "&screen_name=", screenName, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListSubscription(string slug, string ownerScreenName, int userId, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId);
+		}
+
+		public virtual void VerifyListSubscription(string slug, string ownerScreenName, int userId, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&user_id=", userId, "&skip_status=", skipStatus);
+		}
+
+		public virtual void VerifyListSubscription(string slug, string ownerScreenName, string screenName, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName);
+		}
+
+		public virtual void VerifyListSubscription(string slug, string ownerScreenName, string screenName, bool skipStatus, Action<TwitterUser, TwitterResponse> action)
+		{
+			WithHammock(action, "lists/subscribers/show", FormatAsString, "?slug=", slug, "&owner_screen_name=", ownerScreenName, "&screen_name=", screenName, "&skip_status=", skipStatus);
 		}
 
 		public virtual void FollowUserNotifications(string screenName, Action<TwitterUser, TwitterResponse> action)
@@ -9140,14 +12522,14 @@ namespace TweetSharp
 			WithHammock(action, "statuses/retweets_of_me", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
-		public virtual void ListCurrentTrends(Action<TwitterTrends, TwitterResponse> action)
+		public virtual void ListCurrentTrends(int woeid, Action<TwitterCurrentTrends, TwitterResponse> action)
 		{
-			WithHammock(action, "trends/current", FormatAsString);
+			WithHammock(action, "trends/{woeid}", FormatAsString, "?woeid=", woeid);
 		}
 
-		public virtual void ListCurrentTrends(string exclude, Action<TwitterTrends, TwitterResponse> action)
+		public virtual void ListCurrentTrends(string exclude, int woeid, Action<TwitterCurrentTrends, TwitterResponse> action)
 		{
-			WithHammock(action, "trends/current", FormatAsString, "?exclude=", exclude);
+			WithHammock(action, "trends/{woeid}", FormatAsString, "?exclude=", exclude, "&woeid=", woeid);
 		}
 
 		public virtual void ListDailyTrends(Action<TwitterTrends, TwitterResponse> action)

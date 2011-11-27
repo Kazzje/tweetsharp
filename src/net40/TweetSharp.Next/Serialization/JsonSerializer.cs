@@ -55,12 +55,19 @@ namespace TweetSharp.Serialization
 
         internal T DeserializeContent<T>(string content)
         {
-            if(typeof(T) == typeof(TwitterTrends))
+            if (typeof(T) == typeof(TwitterTrends))
             {
                 return DeserializeTrends<T>(content);
             }
 
-            if(typeof(T) == typeof(TwitterLocalTrends))
+            if (typeof(T) == typeof(TwitterLocalTrends))
+            {
+                var instance = JArray.Parse(content);
+                var inner = instance.First.ToString();
+                return DeserializeSingle<T>(inner);
+            }
+
+            if (typeof(T) == typeof(TwitterCurrentTrends))
             {
                 var instance = JArray.Parse(content);
                 var inner = instance.First.ToString();
@@ -72,16 +79,16 @@ namespace TweetSharp.Serialization
                 content = content.Trim('\n');
                 if (content.StartsWith("{\"friends\":["))
                 {
-                    var friends = (JArray) JObject.Parse(content)["friends"];
+                    var friends = (JArray)JObject.Parse(content)["friends"];
                     if (friends != null)
                     {
-                        var result = new TwitterUserStreamFriends {RawSource = content};
+                        var result = new TwitterUserStreamFriends { RawSource = content };
                         var ids = friends.Select(token => token.Value<long>()).ToList();
                         result.Ids = ids;
-                        return (T) (ITwitterModel) result;
+                        return (T)(ITwitterModel)result;
                     }
                 }
-                    // {"delete":{"status":{"user_id_str":"14363427","id_str":"45331017418014721","id":45331017418014721,"user_id":14363427}}}
+                // {"delete":{"status":{"user_id_str":"14363427","id_str":"45331017418014721","id":45331017418014721,"user_id":14363427}}}
                 else if (content.StartsWith("{\"delete\":{\"status\":"))
                 {
                     var deleted = JObject.Parse(content)["delete"]["status"];
@@ -93,7 +100,7 @@ namespace TweetSharp.Serialization
                                              StatusId = deleted["id"].Value<long>(),
                                              UserId = deleted["user_id"].Value<int>()
                                          };
-                        return (T) (ITwitterModel) result;
+                        return (T)(ITwitterModel)result;
                     }
                 }
                 else if (content.StartsWith("{\"delete\":{\"direct_message\":"))
@@ -125,7 +132,7 @@ namespace TweetSharp.Serialization
                         return (T)(ITwitterModel)@event;
                     }
 
-                    if(artifact["direct_message"] != null)
+                    if (artifact["direct_message"] != null)
                     {
                         var json = artifact["direct_message"].ToString();
                         var dm = DeserializeSingle<TwitterDirectMessage>(json);
@@ -145,11 +152,11 @@ namespace TweetSharp.Serialization
             }
 
             var wantsCollection = typeof(IEnumerable).IsAssignableFrom(typeof(T));
-            
+
             var deserialized = wantsCollection
                                    ? DeserializeCollection<T>(content)
                                    : DeserializeSingle<T>(content);
-           
+
             return deserialized;
         }
 
@@ -158,18 +165,18 @@ namespace TweetSharp.Serialization
             var @event = DeserializeSingle<TwitterUserStreamEventBase>(content);
 
             var target = JObject.Parse(content);
-            
+
             var result = new TwitterUserStreamEvent(@event);
 
             var targetObject = target["target_object"];
 
             var json = targetObject.ToString();
 
-            if(targetObject["recipient_screen_name"] != null)
+            if (targetObject["recipient_screen_name"] != null)
             {
                 result.TargetObject = DeserializeSingle<TwitterDirectMessage>(json);
             }
-            else if(targetObject["slug"] != null)
+            else if (targetObject["slug"] != null)
             {
                 result.TargetObject = DeserializeSingle<TwitterList>(json);
             }
@@ -183,50 +190,57 @@ namespace TweetSharp.Serialization
 
         private T DeserializeTrends<T>(string content)
         {
-            var instance = JObject.Parse(content);
-            var inner = instance["trends"];
-            if(inner != null)
+            try
             {
-                var result = new TwitterTrends { RawSource = content };
-
-                var asOf = instance["as_of"] != null ? instance["as_of"].ToString() : "0";
-                result.AsOf = Convert.ToInt64(asOf).FromUnixTime();
-
-                var dateBuckets = inner.Children();
-                    
-                foreach(var dateBucket in dateBuckets.OfType<JProperty>())
+                var instance = JObject.Parse(content);
+                var inner = instance["trends"];
+                if (inner != null)
                 {
-                    var date = dateBucket.Name;
-                    var value = dateBucket.Value.ToString();
-                        
-                    var trends = DeserializeCollection<IEnumerable<TwitterTrend>>(value);
-                    foreach(var trend in trends)
+                    var result = new TwitterTrends { RawSource = content };
+
+                    var asOf = instance["as_of"] != null ? instance["as_of"].ToString() : "0";
+                    result.AsOf = Convert.ToInt64(asOf).FromUnixTime();
+
+                    var dateBuckets = inner.Children();
+
+                    foreach (var dateBucket in dateBuckets.OfType<JProperty>())
                     {
-                        trend.TrendingAsOf = Convert.ToDateTime(date);    
+                        var date = dateBucket.Name;
+                        var value = dateBucket.Value.ToString();
+
+                        var trends = DeserializeCollection<IEnumerable<TwitterTrend>>(value);
+                        foreach (var trend in trends)
+                        {
+                            trend.TrendingAsOf = Convert.ToDateTime(date);
+                        }
+
+                        result.Trends.AddRange(trends);
                     }
-                        
-                    result.Trends.AddRange(trends);
+
+                    return (T)(IEnumerable)result;
                 }
 
-                return (T)(IEnumerable)result;
+                return DeserializeSingle<T>(content);
             }
-
-            return DeserializeSingle<T>(content);
+            catch
+            {
+                return DeserializeSingle<T>(content);
+            }
         }
 
         private T DeserializeSingle<T>(string content)
         {
             var deserialized = DeserializeJson<T>(content);
-                
+
             if (typeof(ITwitterModel).IsAssignableFrom(typeof(T)))
             {
                 ((ITwitterModel)deserialized).RawSource = content;
             }
 
             // Provide a RawSource for embedded tweets
-            if (typeof (T) == typeof (TwitterSearchResult) && content.StartsWith("{\"results\":[{"))
+            if (typeof(T) == typeof(TwitterSearchResult) && content.StartsWith("{\"results\":[{"))
             {
-                var array = (JArray) JObject.Parse(content)["results"];
+                var array = (JArray)JObject.Parse(content)["results"];
                 var result = (TwitterSearchResult)(ITwitterModel)deserialized;
                 var collection = result.Statuses;
                 for (var i = 0; i < collection.Count(); i++)
@@ -243,7 +257,7 @@ namespace TweetSharp.Serialization
         {
             if (typeof(T) == typeof(byte[]))
             {
-                var binary = (IEnumerable) Encoding.UTF8.GetBytes(content);
+                var binary = (IEnumerable)Encoding.UTF8.GetBytes(content);
                 var deserialized = (T)binary;
                 return deserialized;
             }
@@ -253,10 +267,10 @@ namespace TweetSharp.Serialization
 
             Type cursor = null;
             var generics = typeof(T).GetGenericArguments();
-            if(generics.Length > 0)
+            if (generics.Length > 0)
             {
                 var inner = generics[0];
-                cursor = typeof(TwitterCursorList<>).MakeGenericType(inner);    
+                cursor = typeof(TwitterCursorList<>).MakeGenericType(inner);
             }
 
             try
@@ -269,19 +283,19 @@ namespace TweetSharp.Serialization
                 instance = ParseInnerContent<T>("lists", content, cursor, instance, ref array);
                 instance = ParseInnerContent<T>("ids", content, cursor, instance, ref array);
 
-                if(array == null)
+                if (array == null)
                 {
                     array = JArray.Parse(content);
                 }
 
-                var model = typeof (ITwitterModel).IsAssignableFrom(type);
+                var model = typeof(ITwitterModel).IsAssignableFrom(type);
                 var items = array.Select(item => item.ToString());
-                if(model)
+                if (model)
                 {
                     foreach (var c in items)
                     {
                         AddDeserializedItem(c, type, collection);
-                    }    
+                    }
                 }
                 else
                 {
@@ -290,19 +304,19 @@ namespace TweetSharp.Serialization
                         AddDeserializedItemWithoutRawSource(c, type, collection);
                     }
                 }
-                
-                var deserialized = typeof (T) == cursor
+
+                var deserialized = typeof(T) == cursor
                                        ? BindDeserializedItemsIntoCursorCollection<T>(collection, cursor, instance)
                                        : BindDeserializedItemsIntoCollection<T>(collection);
 
                 return deserialized;
             }
-            catch(JsonReaderException readerException) // <-- Likely 502 
+            catch (JsonReaderException readerException) // <-- Likely 502 
             {
                 TraceException(readerException, type, content);
 
                 AddEmptyItem(content, type, collection);
-                
+
                 var deserialized = (T)collection;
 
                 return deserialized;
@@ -312,7 +326,7 @@ namespace TweetSharp.Serialization
                 TraceException(ex, type, content);
 
                 AddDeserializedItem(content, type, collection);
-                
+
                 var deserialized = (T)collection;
 
                 return deserialized;
@@ -333,7 +347,7 @@ namespace TweetSharp.Serialization
         private static JArray ParseFromCursorListOrObject<T>(string type, string content, Type cursor, JObject instance)
         {
             JArray array;
-            if(cursor != null && typeof(T) == cursor)
+            if (cursor != null && typeof(T) == cursor)
             {
                 array = instance != null
                             ? ((JArray)instance[type] ?? JArray.Parse(content))
@@ -364,7 +378,7 @@ namespace TweetSharp.Serialization
 #else
             var list = Activator.CreateInstance(cursor, new object[] {collection});
 #endif
-            if(instance != null)
+            if (instance != null)
             {
                 var next = instance["next_cursor"];
                 var previous = instance["previous_cursor"];
@@ -378,14 +392,14 @@ namespace TweetSharp.Serialization
 
         private static T BindDeserializedItemsIntoCollection<T>(IList collection)
         {
-            var deserialized = (T) collection;
+            var deserialized = (T)collection;
             return deserialized;
         }
 
         private void AddDeserializedItem(string c, Type type, IList collection)
         {
             var d = Deserialize(c, type);
-            ((ITwitterModel)d).RawSource = c;  
+            ((ITwitterModel)d).RawSource = c;
             collection.Add(d);
         }
 

@@ -71,6 +71,7 @@
     <Compile Include="Model\ICursored.cs" />
     <Compile Include="Model\ITweetable.cs" />
     <Compile Include="Model\TwitterClientInfo.cs" />
+    <Compile Include="Model\TwitterCurrentTrends.cs" />
     <Compile Include="Model\TwitterEntities.cs" />
     <Compile Include="Model\TwitterLocalTrends.cs" />
     <Compile Include="Model\TwitterSavedSearch.cs" />

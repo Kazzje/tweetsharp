@@ -840,7 +840,7 @@ namespace TweetSharp.Tests.Service
         public void Can_get_current_trends()
         {
             var service = GetAuthenticatedService();
-            var trends = service.ListCurrentTrends();
+            var trends = service.ListCurrentTrends(1);
             Assert.IsNotNull(trends);
             Assert.IsTrue(trends.Count() ==10);
         }
