@@ -67,7 +67,6 @@ namespace TweetSharp
                 }
 
                 _text = value;
-                _entities = null;
                 OnPropertyChanged("Text");
             }
         }
@@ -86,6 +85,7 @@ namespace TweetSharp
             set
             {
                 _textAsHtml = value;
+                OnPropertyChanged("TextAsHtml");
             }
         }
 
@@ -318,7 +318,7 @@ namespace TweetSharp
 #endif
         public virtual TwitterEntities Entities
         {
-            get { return _entities ?? (_entities = Text.ParseTwitterageToEntities()); }
+            get { return _entities; }
             set
             {
                 if (_entities == value)
@@ -447,7 +447,9 @@ namespace TweetSharp
                                  RawSource = searchStatus.RawSource,
                                  Text = searchStatus.Text,
                                  Entities = searchStatus.Entities,
-                                 User = user
+                                 User = user,
+                                 InReplyToScreenName = searchStatus.ToUserScreenName,
+                                 InReplyToUserId = searchStatus.ToUserId
                              };
 
             return status;
