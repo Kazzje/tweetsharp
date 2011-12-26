@@ -144,7 +144,7 @@ namespace TweetSharp
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        [Obsolete("This property is currently erroneous as it contains an internal ID")]
+        
         public virtual int? ToUserId
         {
             get { return _toUserId; }
