@@ -51,9 +51,9 @@ namespace TweetSharp.Serialization
             }
         }
 
-        public abstract T Deserialize<T>(RestResponse<T> response);
+        public abstract T Deserialize<T>(RestResponseBase response);
 
-        public abstract object Deserialize(RestResponse response, Type type);
+        public abstract object Deserialize(RestResponseBase response, Type type);
         
         public virtual object DeserializeJson(string content, Type type)
         {

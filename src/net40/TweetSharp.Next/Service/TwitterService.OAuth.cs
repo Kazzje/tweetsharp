@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using Hammock;
 using Hammock.Authentication.OAuth;
@@ -11,6 +13,7 @@ using System.Compat.Web;
 #endif
 
 #if WINDOWS_PHONE
+using ICSharpCode.SharpZipLib.Silverlight.GZip;
 using HttpUtility = System.Web.HttpUtility;
 #endif
 
@@ -368,14 +371,39 @@ namespace TweetSharp
                                         }
 
                                        var query = HttpUtility.ParseQueryString(resp.Content);
-                                       var accessToken = new OAuthAccessToken
+
+                                       try
                                        {
-                                           Token = query["oauth_token"] ?? "?",
-                                           TokenSecret = query["oauth_token_secret"] ?? "?",
-                                           UserId = Convert.ToInt32(query["user_id"] ?? "0"),
-                                           ScreenName = query["screen_name"] ?? "?"
-                                       };
-                                       return accessToken;
+                                           var accessToken = new OAuthAccessToken
+                                                                 {
+                                                                     Token = query["oauth_token"] ?? "?",
+                                                                     TokenSecret = query["oauth_token_secret"] ?? "?",
+                                                                     UserId = Convert.ToInt32(query["user_id"] ?? "0"),
+                                                                     ScreenName = query["screen_name"] ?? "?"
+                                                                 };
+
+                                           return accessToken;
+                                       }
+                                       catch
+                                       {
+                                           var stream = new GZipInputStream(resp.ContentStream);
+
+                                           using (var reader = new StreamReader(stream, Encoding.UTF8))
+                                           {
+                                               query = HttpUtility.ParseQueryString(reader.ReadToEnd());
+
+                                               var accessToken = new OAuthAccessToken
+                                                                     {
+                                                                         Token = query["oauth_token"] ?? "?",
+                                                                         TokenSecret = query["oauth_token_secret"] ?? "?",
+                                                                         UserId = Convert.ToInt32(query["user_id"] ?? "0"),
+                                                                         ScreenName = query["screen_name"] ?? "?"
+                                                                     };
+
+                                               return accessToken;
+                                           }
+                                       }
+                                       
                                    },
                                    out exception);
 
@@ -430,7 +458,7 @@ namespace TweetSharp
             var workflow = new OAuthWorkflow(credentials);
 
             var info = workflow.BuildProtectedResourceInfo(request.Method.Value, request.GetAllHeaders(), url);
-            var query = credentials.GetQueryFor(url, request, info, request.Method.Value);
+            var query = credentials.GetQueryFor(url, request, info, request.Method.Value, false);
             ((OAuthWebQuery)query).Realm = "http://api.twitter.com";
             var auth = query.GetAuthorizationContent();
 

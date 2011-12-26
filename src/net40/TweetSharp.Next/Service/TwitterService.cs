@@ -173,7 +173,8 @@ namespace TweetSharp
                          {
                              Authority = Globals.RestAPIAuthority,
                              Proxy = Proxy,
-                             UserAgent = "TweetSharp",
+                             UserAgent = "TweetSharp", 
+                             DecompressionMethods = DecompressionMethods.GZip,
 #if SILVERLIGHT
                              HasElevatedPermissions = true
 #endif
@@ -285,7 +286,7 @@ namespace TweetSharp
 
             if (_customDeserializer != null)
             {
-                return _customDeserializer.Deserialize(response);
+                return _customDeserializer.Deserialize<T>(response);
             }
 
             switch (Format)
