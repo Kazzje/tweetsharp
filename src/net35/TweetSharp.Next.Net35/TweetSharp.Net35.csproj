@@ -96,6 +96,9 @@
     <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterClientInfo.cs">
       <Link>Model\TwitterClientInfo.cs</Link>
     </Compile>
+    <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterConfiguration.cs">
+      <Link>Model\TwitterConfiguration.cs</Link>
+    </Compile>
     <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterCurrentTrends.cs">
       <Link>Model\TwitterCurrentTrends.cs</Link>
     </Compile>
@@ -119,6 +122,9 @@
     </Compile>
     <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterError.cs">
       <Link>Model\TwitterError.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterErrors.cs">
+      <Link>Model\TwitterErrors.cs</Link>
     </Compile>
     <Compile Include="..\..\net40\TweetSharp.Next\Model\TwitterFriend.cs">
       <Link>Model\TwitterFriend.cs</Link>

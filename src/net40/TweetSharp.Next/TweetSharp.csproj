@@ -44,9 +44,8 @@
     <Reference Include="Hammock.ClientProfile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Hammock.1.2.3\lib\net40-client\Hammock.ClientProfile.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.4.0.1\lib\40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,8 +70,10 @@
     <Compile Include="Model\ICursored.cs" />
     <Compile Include="Model\ITweetable.cs" />
     <Compile Include="Model\TwitterClientInfo.cs" />
+    <Compile Include="Model\TwitterConfiguration.cs" />
     <Compile Include="Model\TwitterCurrentTrends.cs" />
     <Compile Include="Model\TwitterEntities.cs" />
+    <Compile Include="Model\TwitterErrors.cs" />
     <Compile Include="Model\TwitterLocalTrends.cs" />
     <Compile Include="Model\TwitterSavedSearch.cs" />
     <Compile Include="Model\TwitterSearchResult.cs" />
@@ -145,6 +146,7 @@
     <Content Include="Generated\_TwitterService.Trends.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Generated\_TwitterService.Configuration.json" />
     <None Include="Generated\_TwitterService.Notifications.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

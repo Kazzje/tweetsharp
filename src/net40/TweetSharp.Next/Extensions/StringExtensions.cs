@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace TweetSharp
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static bool IsNullOrBlank(this string input)
         {
@@ -39,12 +39,12 @@ namespace TweetSharp
 #if !SILVERLIGHT
  RegexOptions.Compiled | RegexOptions.IgnoreCase;
 #else
-            RegexOptions.IgnoreCase;
+            RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace;
 #endif
 
         // Jon Gruber's URL Regex: http://daringfireball.net/2009/11/liberal_regex_for_matching_urls
-        private static readonly Regex _parseUrls =
-            new Regex(@"\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^\p{P}\s]|/)))", Options);
+        //private static readonly Regex _parseUrls = new Regex(@"\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^\p{P}\s]|/)))", Options);
+        private static readonly Regex _parseUrls = new Regex(@"(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'.,<>?«»“”‘’]))", Options);
 
         // Diego Sevilla's @ Regex: http://stackoverflow.com/questions/529965/how-could-i-combine-these-regex-rules
         private static readonly Regex _parseMentions = new Regex(@"(^|\W)@([A-Za-z0-9_]+)", Options);

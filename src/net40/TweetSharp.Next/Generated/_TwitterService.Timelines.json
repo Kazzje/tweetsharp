@@ -1,6 +1,4 @@
-﻿IEnumerable<TwitterStatus>, "statuses/public_timeline", ListTweetsOnPublicTimeline
-
-IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimeline
+﻿IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimeline
 IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimeline, int count
 IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimeline, int page, int count
 IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimelineSince, long sinceId
@@ -19,16 +17,6 @@ IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimelineSi
 IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimelineBefore, long maxId, bool includeRts
 IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimelineBefore, long maxId, int count, bool includeRts
 IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimelineBefore, long maxId, int page, int count, bool includeRts
-
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimeline
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimeline, int count
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimeline, int page, int count
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimelineSince, long sinceId
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimelineSince, long sinceId, int count
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimelineSince, long sinceId, int page, int count
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimelineBefore, long maxId
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimelineBefore, long maxId, int count
-IEnumerable<TwitterStatus>, "statuses/friends_timeline", ListTweetsOnFriendsTimelineBefore, long maxId, int page, int count
 
 IEnumerable<TwitterStatus>, "statuses/user_timeline", ListTweetsOnUserTimeline
 IEnumerable<TwitterStatus>, "statuses/user_timeline", ListTweetsOnUserTimeline, int count

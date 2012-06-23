@@ -1,9 +1,9 @@
 ﻿TwitterStatus, "statuses/show/{id}", GetTweet, long id
 
 TwitterStatus, "statuses/update":POST, SendTweet, string status
-TwitterStatus, "statuses/update":POST, SendTweet, string status, double lat, double @long
+TwitterStatus, "statuses/update":POST, SendTweet, string status, string lat, string @long
 TwitterStatus, "statuses/update":POST, SendTweet, string status, long inReplyToStatusId
-TwitterStatus, "statuses/update":POST, SendTweet, string status, long inReplyToStatusId, double lat, double @long
+TwitterStatus, "statuses/update":POST, SendTweet, string status, long inReplyToStatusId, string lat, string @long
 
 TwitterStatus, "statuses/destroy/{id}":DELETE, DeleteTweet, long id
 

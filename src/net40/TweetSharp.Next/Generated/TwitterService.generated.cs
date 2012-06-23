@@ -35,6 +35,8 @@ namespace TweetSharp
 
 		TwitterUser UpdateProfile(string name, string description, string email, string url, string location);	
 
+		TwitterConfiguration GetConfiguration();	
+
 		TwitterUser BlockUser(int userId);	
 
 		TwitterUser BlockUser(string userScreenName);	
@@ -511,8 +513,6 @@ namespace TweetSharp
 
 		TwitterUser ReportSpam(string userScreenName);	
 
-		IEnumerable<TwitterStatus> ListTweetsOnPublicTimeline();	
-
 		IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline();	
 
 		IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(int count);	
@@ -548,24 +548,6 @@ namespace TweetSharp
 		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts);	
 
 		IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline();	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline(int count);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline(int page, int count);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineSince(long sinceId);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineSince(long sinceId, int count);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineSince(long sinceId, int page, int count);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineBefore(long maxId);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineBefore(long maxId, int count);	
-
-		IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineBefore(long maxId, int page, int count);	
 
 		IEnumerable<TwitterStatus> ListTweetsOnUserTimeline();	
 
@@ -769,9 +751,9 @@ namespace TweetSharp
 
 		IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations();	
 
-		IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(double lat);	
+		IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(string lat);	
 
-		IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(double lat, double @long);	
+		IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(string lat, string @long);	
 
 		TwitterLocalTrends ListLocalTrendsFor(long woeId);	
 
@@ -779,11 +761,11 @@ namespace TweetSharp
 
 		TwitterStatus SendTweet(string status);	
 
-		TwitterStatus SendTweet(string status, double lat, double @long);	
+		TwitterStatus SendTweet(string status, string lat, string @long);	
 
 		TwitterStatus SendTweet(string status, long inReplyToStatusId);	
 
-		TwitterStatus SendTweet(string status, long inReplyToStatusId, double lat, double @long);	
+		TwitterStatus SendTweet(string status, long inReplyToStatusId, string lat, string @long);	
 
 		TwitterStatus DeleteTweet(long id);	
 
@@ -801,30 +783,6 @@ namespace TweetSharp
 
 		IEnumerable<int> ListUserIdsWhoRetweeted(long id, int count);	
 
-		TwitterCursorList<TwitterUser> ListFriends();	
-
-		TwitterCursorList<TwitterUser> ListFriends(long cursor);	
-
-		TwitterCursorList<TwitterUser> ListFriendsOf(int userId);	
-
-		TwitterCursorList<TwitterUser> ListFriendsOf(int userId, long cursor);	
-
-		TwitterCursorList<TwitterUser> ListFriendsOf(string screenName);	
-
-		TwitterCursorList<TwitterUser> ListFriendsOf(string screenName, long cursor);	
-
-		TwitterCursorList<TwitterUser> ListFollowers();	
-
-		TwitterCursorList<TwitterUser> ListFollowers(long cursor);	
-
-		TwitterCursorList<TwitterUser> ListFollowersOf(int userId);	
-
-		TwitterCursorList<TwitterUser> ListFollowersOf(int userId, long cursor);	
-
-		TwitterCursorList<TwitterUser> ListFollowersOf(string screenName);	
-
-		TwitterCursorList<TwitterUser> ListFollowersOf(string screenName, long cursor);	
-
 		TwitterUser GetUserProfile();	
 
 		TwitterUser GetUserProfileFor(string screenName);	
@@ -837,11 +795,7 @@ namespace TweetSharp
 
 		IEnumerable<TwitterUser> SearchForUser(string q, int page, int perPage);	
 
-		IEnumerable<TwitterUser> ListUserProfilesFor(IEnumerable<string> screenName);	
-
-		IEnumerable<TwitterUser> ListUserProfilesFor(IEnumerable<int> userId);	
-
-		IEnumerable<TwitterUser> ListUserProfilesFor(IEnumerable<string> screenName, IEnumerable<int> userId);	
+		IEnumerable<TwitterUser> ListUserProfilesFor(string userId);	
 
 		byte[] GetProfileImageFor(string screenName);	
 
@@ -879,6 +833,8 @@ namespace TweetSharp
 		IAsyncResult UpdateProfileBackgroundImage(string path, Action<TwitterUser, TwitterResponse> action);		
 
 		IAsyncResult UpdateProfile(string name, string description, string email, string url, string location, Action<TwitterUser, TwitterResponse> action);		
+
+		IAsyncResult GetConfiguration(Action<TwitterConfiguration, TwitterResponse> action);		
 
 		IAsyncResult BlockUser(int userId, Action<TwitterUser, TwitterResponse> action);		
 
@@ -1356,8 +1312,6 @@ namespace TweetSharp
 
 		IAsyncResult ReportSpam(string userScreenName, Action<TwitterUser, TwitterResponse> action);		
 
-		IAsyncResult ListTweetsOnPublicTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
 		IAsyncResult ListTweetsOnHomeTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
 		IAsyncResult ListTweetsOnHomeTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
@@ -1393,24 +1347,6 @@ namespace TweetSharp
 		IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
 		IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimeline(int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimelineSince(long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimelineSince(long sinceId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimelineSince(long sinceId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimelineBefore(long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimelineBefore(long maxId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
-
-		IAsyncResult ListTweetsOnFriendsTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
 		IAsyncResult ListTweetsOnUserTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);		
 
@@ -1614,9 +1550,9 @@ namespace TweetSharp
 
 		IAsyncResult ListAvailableTrendsLocations(Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);		
 
-		IAsyncResult ListAvailableTrendsLocations(double lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);		
+		IAsyncResult ListAvailableTrendsLocations(string lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);		
 
-		IAsyncResult ListAvailableTrendsLocations(double lat, double @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);		
+		IAsyncResult ListAvailableTrendsLocations(string lat, string @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);		
 
 		IAsyncResult ListLocalTrendsFor(long woeId, Action<TwitterLocalTrends, TwitterResponse> action);		
 
@@ -1624,11 +1560,11 @@ namespace TweetSharp
 
 		IAsyncResult SendTweet(string status, Action<TwitterStatus, TwitterResponse> action);		
 
-		IAsyncResult SendTweet(string status, double lat, double @long, Action<TwitterStatus, TwitterResponse> action);		
+		IAsyncResult SendTweet(string status, string lat, string @long, Action<TwitterStatus, TwitterResponse> action);		
 
 		IAsyncResult SendTweet(string status, long inReplyToStatusId, Action<TwitterStatus, TwitterResponse> action);		
 
-		IAsyncResult SendTweet(string status, long inReplyToStatusId, double lat, double @long, Action<TwitterStatus, TwitterResponse> action);		
+		IAsyncResult SendTweet(string status, long inReplyToStatusId, string lat, string @long, Action<TwitterStatus, TwitterResponse> action);		
 
 		IAsyncResult DeleteTweet(long id, Action<TwitterStatus, TwitterResponse> action);		
 
@@ -1646,30 +1582,6 @@ namespace TweetSharp
 
 		IAsyncResult ListUserIdsWhoRetweeted(long id, int count, Action<IEnumerable<int>, TwitterResponse> action);		
 
-		IAsyncResult ListFriends(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFriends(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFriendsOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFriendsOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFriendsOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFriendsOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFollowers(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFollowers(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFollowersOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFollowersOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFollowersOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListFollowersOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);		
-
 		IAsyncResult GetUserProfile(Action<TwitterUser, TwitterResponse> action);		
 
 		IAsyncResult GetUserProfileFor(string screenName, Action<TwitterUser, TwitterResponse> action);		
@@ -1682,11 +1594,7 @@ namespace TweetSharp
 
 		IAsyncResult SearchForUser(string q, int page, int perPage, Action<IEnumerable<TwitterUser>, TwitterResponse> action);		
 
-		IAsyncResult ListUserProfilesFor(IEnumerable<string> screenName, Action<IEnumerable<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListUserProfilesFor(IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action);		
-
-		IAsyncResult ListUserProfilesFor(IEnumerable<string> screenName, IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action);		
+		IAsyncResult ListUserProfilesFor(string userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action);		
 
 		IAsyncResult GetProfileImageFor(string screenName, Action<byte[], TwitterResponse> action);		
 
@@ -1748,6 +1656,12 @@ namespace TweetSharp
 		TwitterUser EndUpdateProfile(IAsyncResult result);		
 
 		TwitterUser EndUpdateProfile(IAsyncResult result, TimeSpan timeout);
+
+		IAsyncResult BeginGetConfiguration();
+
+		TwitterConfiguration EndGetConfiguration(IAsyncResult result);		
+
+		TwitterConfiguration EndGetConfiguration(IAsyncResult result, TimeSpan timeout);
 
 		IAsyncResult BeginBlockUser();
 
@@ -2091,12 +2005,6 @@ namespace TweetSharp
 
 		TwitterUser EndReportSpam(IAsyncResult result, TimeSpan timeout);
 
-		IAsyncResult BeginListTweetsOnPublicTimeline();
-
-		IEnumerable<TwitterStatus> EndListTweetsOnPublicTimeline(IAsyncResult result);		
-
-		IEnumerable<TwitterStatus> EndListTweetsOnPublicTimeline(IAsyncResult result, TimeSpan timeout);
-
 		IAsyncResult BeginListTweetsOnHomeTimeline();
 
 		IEnumerable<TwitterStatus> EndListTweetsOnHomeTimeline(IAsyncResult result);		
@@ -2114,24 +2022,6 @@ namespace TweetSharp
 		IEnumerable<TwitterStatus> EndListTweetsOnHomeTimelineBefore(IAsyncResult result);		
 
 		IEnumerable<TwitterStatus> EndListTweetsOnHomeTimelineBefore(IAsyncResult result, TimeSpan timeout);
-
-		IAsyncResult BeginListTweetsOnFriendsTimeline();
-
-		IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimeline(IAsyncResult result);		
-
-		IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimeline(IAsyncResult result, TimeSpan timeout);
-
-		IAsyncResult BeginListTweetsOnFriendsTimelineSince();
-
-		IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineSince(IAsyncResult result);		
-
-		IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineSince(IAsyncResult result, TimeSpan timeout);
-
-		IAsyncResult BeginListTweetsOnFriendsTimelineBefore();
-
-		IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineBefore(IAsyncResult result);		
-
-		IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineBefore(IAsyncResult result, TimeSpan timeout);
 
 		IAsyncResult BeginListTweetsOnUserTimeline();
 
@@ -2313,30 +2203,6 @@ namespace TweetSharp
 
 		IEnumerable<int> EndListUserIdsWhoRetweeted(IAsyncResult result, TimeSpan timeout);
 
-		IAsyncResult BeginListFriends();
-
-		TwitterCursorList<TwitterUser> EndListFriends(IAsyncResult result);		
-
-		TwitterCursorList<TwitterUser> EndListFriends(IAsyncResult result, TimeSpan timeout);
-
-		IAsyncResult BeginListFriendsOf();
-
-		TwitterCursorList<TwitterUser> EndListFriendsOf(IAsyncResult result);		
-
-		TwitterCursorList<TwitterUser> EndListFriendsOf(IAsyncResult result, TimeSpan timeout);
-
-		IAsyncResult BeginListFollowers();
-
-		TwitterCursorList<TwitterUser> EndListFollowers(IAsyncResult result);		
-
-		TwitterCursorList<TwitterUser> EndListFollowers(IAsyncResult result, TimeSpan timeout);
-
-		IAsyncResult BeginListFollowersOf();
-
-		TwitterCursorList<TwitterUser> EndListFollowersOf(IAsyncResult result);		
-
-		TwitterCursorList<TwitterUser> EndListFollowersOf(IAsyncResult result, TimeSpan timeout);
-
 		IAsyncResult BeginGetUserProfile();
 
 		TwitterUser EndGetUserProfile(IAsyncResult result);		
@@ -2407,6 +2273,8 @@ namespace TweetSharp
 		void UpdateProfileBackgroundImage(string path, Action<TwitterUser, TwitterResponse> action);
 
 		void UpdateProfile(string name, string description, string email, string url, string location, Action<TwitterUser, TwitterResponse> action);
+
+		void GetConfiguration(Action<TwitterConfiguration, TwitterResponse> action);
 
 		void BlockUser(int userId, Action<TwitterUser, TwitterResponse> action);
 
@@ -2884,8 +2752,6 @@ namespace TweetSharp
 
 		void ReportSpam(string userScreenName, Action<TwitterUser, TwitterResponse> action);
 
-		void ListTweetsOnPublicTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
 		void ListTweetsOnHomeTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
 		void ListTweetsOnHomeTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
@@ -2921,24 +2787,6 @@ namespace TweetSharp
 		void ListTweetsOnHomeTimelineBefore(long maxId, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
 		void ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimeline(int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimelineSince(long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimelineSince(long sinceId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimelineSince(long sinceId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimelineBefore(long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimelineBefore(long maxId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
-
-		void ListTweetsOnFriendsTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
 		void ListTweetsOnUserTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action);
 
@@ -3142,9 +2990,9 @@ namespace TweetSharp
 
 		void ListAvailableTrendsLocations(Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);
 
-		void ListAvailableTrendsLocations(double lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);
+		void ListAvailableTrendsLocations(string lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);
 
-		void ListAvailableTrendsLocations(double lat, double @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);
+		void ListAvailableTrendsLocations(string lat, string @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action);
 
 		void ListLocalTrendsFor(long woeId, Action<TwitterLocalTrends, TwitterResponse> action);
 
@@ -3152,11 +3000,11 @@ namespace TweetSharp
 
 		void SendTweet(string status, Action<TwitterStatus, TwitterResponse> action);
 
-		void SendTweet(string status, double lat, double @long, Action<TwitterStatus, TwitterResponse> action);
+		void SendTweet(string status, string lat, string @long, Action<TwitterStatus, TwitterResponse> action);
 
 		void SendTweet(string status, long inReplyToStatusId, Action<TwitterStatus, TwitterResponse> action);
 
-		void SendTweet(string status, long inReplyToStatusId, double lat, double @long, Action<TwitterStatus, TwitterResponse> action);
+		void SendTweet(string status, long inReplyToStatusId, string lat, string @long, Action<TwitterStatus, TwitterResponse> action);
 
 		void DeleteTweet(long id, Action<TwitterStatus, TwitterResponse> action);
 
@@ -3174,30 +3022,6 @@ namespace TweetSharp
 
 		void ListUserIdsWhoRetweeted(long id, int count, Action<IEnumerable<int>, TwitterResponse> action);
 
-		void ListFriends(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFriends(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFriendsOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFriendsOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFriendsOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFriendsOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFollowers(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFollowers(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFollowersOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFollowersOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFollowersOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
-		void ListFollowersOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action);
-
 		void GetUserProfile(Action<TwitterUser, TwitterResponse> action);
 
 		void GetUserProfileFor(string screenName, Action<TwitterUser, TwitterResponse> action);
@@ -3210,11 +3034,7 @@ namespace TweetSharp
 
 		void SearchForUser(string q, int page, int perPage, Action<IEnumerable<TwitterUser>, TwitterResponse> action);
 
-		void ListUserProfilesFor(IEnumerable<string> screenName, Action<IEnumerable<TwitterUser>, TwitterResponse> action);
-
-		void ListUserProfilesFor(IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action);
-
-		void ListUserProfilesFor(IEnumerable<string> screenName, IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action);
+		void ListUserProfilesFor(string userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action);
 
 		void GetProfileImageFor(string screenName, Action<byte[], TwitterResponse> action);
 
@@ -3295,6 +3115,11 @@ namespace TweetSharp
 		public virtual TwitterUser UpdateProfile(string name, string description, string email, string url, string location)
 		{
 			return WithHammock<TwitterUser>(WebMethod.Post, "account/update_profile", FormatAsString, "?name=", name, "&description=", description, "&email=", email, "&url=", url, "&location=", location);
+		}
+
+		public virtual TwitterConfiguration GetConfiguration()
+		{
+			return WithHammock<TwitterConfiguration>("help/configuration", FormatAsString);
 		}
 
 		public virtual TwitterUser BlockUser(int userId)
@@ -4487,11 +4312,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(WebMethod.Post, "report_spam", FormatAsString, "?user_screen_name=", userScreenName);
 		}
 
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnPublicTimeline()
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/public_timeline", FormatAsString);
-		}
-
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline()
 		{
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString);
@@ -4580,51 +4400,6 @@ namespace TweetSharp
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts)
 		{
 			return WithHammock<IEnumerable<TwitterStatus>>("statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline()
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline(int count)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?count=", count);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimeline(int page, int count)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?page=", page, "&count=", count);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineSince(long sinceId)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?since_id=", sinceId);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineSince(long sinceId, int count)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineSince(long sinceId, int page, int count)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineBefore(long maxId)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?max_id=", maxId);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineBefore(long maxId, int count)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&count=", count);
-		}
-
-		public virtual IEnumerable<TwitterStatus> ListTweetsOnFriendsTimelineBefore(long maxId, int page, int count)
-		{
-			return WithHammock<IEnumerable<TwitterStatus>>("statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimeline()
@@ -5132,12 +4907,12 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<WhereOnEarthLocation>>("trends/available", FormatAsString);
 		}
 
-		public virtual IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(double lat)
+		public virtual IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(string lat)
 		{
 			return WithHammock<IEnumerable<WhereOnEarthLocation>>("trends/available", FormatAsString, "?lat=", lat);
 		}
 
-		public virtual IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(double lat, double @long)
+		public virtual IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations(string lat, string @long)
 		{
 			return WithHammock<IEnumerable<WhereOnEarthLocation>>("trends/available", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
@@ -5157,7 +4932,7 @@ namespace TweetSharp
 			return WithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status);
 		}
 
-		public virtual TwitterStatus SendTweet(string status, double lat, double @long)
+		public virtual TwitterStatus SendTweet(string status, string lat, string @long)
 		{
 			return WithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&lat=", lat, "&long=", @long);
 		}
@@ -5167,7 +4942,7 @@ namespace TweetSharp
 			return WithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId);
 		}
 
-		public virtual TwitterStatus SendTweet(string status, long inReplyToStatusId, double lat, double @long)
+		public virtual TwitterStatus SendTweet(string status, long inReplyToStatusId, string lat, string @long)
 		{
 			return WithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId, "&lat=", lat, "&long=", @long);
 		}
@@ -5212,66 +4987,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<int>>("statuses/{id}/retweeted_by/ids", FormatAsString, "?id=", id, "&count=", count);
 		}
 
-		public virtual TwitterCursorList<TwitterUser> ListFriends()
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/friends", FormatAsString);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFriends(long cursor)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/friends", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFriendsOf(int userId)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/friends", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFriendsOf(int userId, long cursor)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/friends", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFriendsOf(string screenName)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/friends", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFriendsOf(string screenName, long cursor)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/friends", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFollowers()
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/followers", FormatAsString);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFollowers(long cursor)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/followers", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFollowersOf(int userId)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/followers", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFollowersOf(int userId, long cursor)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/followers", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFollowersOf(string screenName)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/followers", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> ListFollowersOf(string screenName, long cursor)
-		{
-			return WithHammock<TwitterCursorList<TwitterUser>>("statuses/followers", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
 		public virtual TwitterUser GetUserProfile()
 		{
 			return WithHammock<TwitterUser>("account/verify_credentials", FormatAsString);
@@ -5302,19 +5017,9 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterUser>>("users/search", FormatAsString, "?q=", q, "&page=", page, "&per_page=", perPage);
 		}
 
-		public virtual IEnumerable<TwitterUser> ListUserProfilesFor(IEnumerable<string> screenName)
-		{
-			return WithHammock<IEnumerable<TwitterUser>>("users/lookup", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual IEnumerable<TwitterUser> ListUserProfilesFor(IEnumerable<int> userId)
+		public virtual IEnumerable<TwitterUser> ListUserProfilesFor(string userId)
 		{
 			return WithHammock<IEnumerable<TwitterUser>>("users/lookup", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual IEnumerable<TwitterUser> ListUserProfilesFor(IEnumerable<string> screenName, IEnumerable<int> userId)
-		{
-			return WithHammock<IEnumerable<TwitterUser>>("users/lookup", FormatAsString, "?screen_name=", screenName, "&user_id=", userId);
 		}
 
 		public virtual byte[] GetProfileImageFor(string screenName)
@@ -5400,6 +5105,11 @@ namespace TweetSharp
 		public virtual IAsyncResult UpdateProfile(string name, string description, string email, string url, string location, Action<TwitterUser, TwitterResponse> action)
 		{
 			return WithHammock(WebMethod.Post, action, "account/update_profile", FormatAsString, "?name=", name, "&description=", description, "&email=", email, "&url=", url, "&location=", location);
+		}
+
+		public virtual IAsyncResult GetConfiguration(Action<TwitterConfiguration, TwitterResponse> action)
+		{
+			return WithHammock(action, "help/configuration", FormatAsString);
 		}
 
 		public virtual IAsyncResult BlockUser(int userId, Action<TwitterUser, TwitterResponse> action)
@@ -6592,11 +6302,6 @@ namespace TweetSharp
 			return WithHammock(WebMethod.Post, action, "report_spam", FormatAsString, "?user_screen_name=", userScreenName);
 		}
 
-		public virtual IAsyncResult ListTweetsOnPublicTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/public_timeline", FormatAsString);
-		}
-
 		public virtual IAsyncResult ListTweetsOnHomeTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			return WithHammock(action, "statuses/home_timeline", FormatAsString);
@@ -6685,51 +6390,6 @@ namespace TweetSharp
 		public virtual IAsyncResult ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			return WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?count=", count);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimeline(int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?page=", page, "&count=", count);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimelineSince(long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimelineSince(long sinceId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimelineSince(long sinceId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimelineBefore(long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimelineBefore(long maxId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&count=", count);
-		}
-
-		public virtual IAsyncResult ListTweetsOnFriendsTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
 		public virtual IAsyncResult ListTweetsOnUserTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
@@ -7237,12 +6897,12 @@ namespace TweetSharp
 			return WithHammock(action, "trends/available", FormatAsString);
 		}
 
-		public virtual IAsyncResult ListAvailableTrendsLocations(double lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
+		public virtual IAsyncResult ListAvailableTrendsLocations(string lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
 		{
 			return WithHammock(action, "trends/available", FormatAsString, "?lat=", lat);
 		}
 
-		public virtual IAsyncResult ListAvailableTrendsLocations(double lat, double @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
+		public virtual IAsyncResult ListAvailableTrendsLocations(string lat, string @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
 		{
 			return WithHammock(action, "trends/available", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
@@ -7262,7 +6922,7 @@ namespace TweetSharp
 			return WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status);
 		}
 
-		public virtual IAsyncResult SendTweet(string status, double lat, double @long, Action<TwitterStatus, TwitterResponse> action)
+		public virtual IAsyncResult SendTweet(string status, string lat, string @long, Action<TwitterStatus, TwitterResponse> action)
 		{
 			return WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&lat=", lat, "&long=", @long);
 		}
@@ -7272,7 +6932,7 @@ namespace TweetSharp
 			return WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId);
 		}
 
-		public virtual IAsyncResult SendTweet(string status, long inReplyToStatusId, double lat, double @long, Action<TwitterStatus, TwitterResponse> action)
+		public virtual IAsyncResult SendTweet(string status, long inReplyToStatusId, string lat, string @long, Action<TwitterStatus, TwitterResponse> action)
 		{
 			return WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId, "&lat=", lat, "&long=", @long);
 		}
@@ -7317,66 +6977,6 @@ namespace TweetSharp
 			return WithHammock(action, "statuses/{id}/retweeted_by/ids", FormatAsString, "?id=", id, "&count=", count);
 		}
 
-		public virtual IAsyncResult ListFriends(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends", FormatAsString);
-		}
-
-		public virtual IAsyncResult ListFriends(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual IAsyncResult ListFriendsOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual IAsyncResult ListFriendsOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual IAsyncResult ListFriendsOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual IAsyncResult ListFriendsOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/friends", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
-		public virtual IAsyncResult ListFollowers(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/followers", FormatAsString);
-		}
-
-		public virtual IAsyncResult ListFollowers(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/followers", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual IAsyncResult ListFollowersOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/followers", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual IAsyncResult ListFollowersOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/followers", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual IAsyncResult ListFollowersOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/followers", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual IAsyncResult ListFollowersOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "statuses/followers", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
 		public virtual IAsyncResult GetUserProfile(Action<TwitterUser, TwitterResponse> action)
 		{
 			return WithHammock(action, "account/verify_credentials", FormatAsString);
@@ -7407,19 +7007,9 @@ namespace TweetSharp
 			return WithHammock(action, "users/search", FormatAsString, "?q=", q, "&page=", page, "&per_page=", perPage);
 		}
 
-		public virtual IAsyncResult ListUserProfilesFor(IEnumerable<string> screenName, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "users/lookup", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual IAsyncResult ListUserProfilesFor(IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
+		public virtual IAsyncResult ListUserProfilesFor(string userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
 		{
 			return WithHammock(action, "users/lookup", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual IAsyncResult ListUserProfilesFor(IEnumerable<string> screenName, IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
-		{
-			return WithHammock(action, "users/lookup", FormatAsString, "?screen_name=", screenName, "&user_id=", userId);
 		}
 
 		public virtual IAsyncResult GetProfileImageFor(string screenName, Action<byte[], TwitterResponse> action)
@@ -7505,6 +7095,11 @@ namespace TweetSharp
 		public virtual IAsyncResult BeginUpdateProfile(string name, string description, string email, string url, string location)
 		{
 			return BeginWithHammock<TwitterUser>(WebMethod.Post, "account/update_profile", FormatAsString, "?name=", name, "&description=", description, "&email=", email, "&url=", url, "&location=", location);
+		}
+
+		public virtual IAsyncResult BeginGetConfiguration()
+		{
+			return BeginWithHammock<TwitterConfiguration>(WebMethod.Get, "help/configuration", FormatAsString);
 		}
 
 		public virtual IAsyncResult BeginBlockUser(int userId)
@@ -8697,11 +8292,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(WebMethod.Post, "report_spam", FormatAsString, "?user_screen_name=", userScreenName);
 		}
 
-		public virtual IAsyncResult BeginListTweetsOnPublicTimeline()
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/public_timeline", FormatAsString);
-		}
-
 		public virtual IAsyncResult BeginListTweetsOnHomeTimeline()
 		{
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString);
@@ -8790,51 +8380,6 @@ namespace TweetSharp
 		public virtual IAsyncResult BeginListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts)
 		{
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimeline()
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimeline(int count)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?count=", count);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimeline(int page, int count)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?page=", page, "&count=", count);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimelineSince(long sinceId)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimelineSince(long sinceId, int count)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimelineSince(long sinceId, int page, int count)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimelineBefore(long maxId)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimelineBefore(long maxId, int count)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&count=", count);
-		}
-
-		public virtual IAsyncResult BeginListTweetsOnFriendsTimelineBefore(long maxId, int page, int count)
-		{
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(WebMethod.Get, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
 		public virtual IAsyncResult BeginListTweetsOnUserTimeline()
@@ -9342,12 +8887,12 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<WhereOnEarthLocation>>(WebMethod.Get, "trends/available", FormatAsString);
 		}
 
-		public virtual IAsyncResult BeginListAvailableTrendsLocations(double lat)
+		public virtual IAsyncResult BeginListAvailableTrendsLocations(string lat)
 		{
 			return BeginWithHammock<IEnumerable<WhereOnEarthLocation>>(WebMethod.Get, "trends/available", FormatAsString, "?lat=", lat);
 		}
 
-		public virtual IAsyncResult BeginListAvailableTrendsLocations(double lat, double @long)
+		public virtual IAsyncResult BeginListAvailableTrendsLocations(string lat, string @long)
 		{
 			return BeginWithHammock<IEnumerable<WhereOnEarthLocation>>(WebMethod.Get, "trends/available", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
@@ -9367,7 +8912,7 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status);
 		}
 
-		public virtual IAsyncResult BeginSendTweet(string status, double lat, double @long)
+		public virtual IAsyncResult BeginSendTweet(string status, string lat, string @long)
 		{
 			return BeginWithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&lat=", lat, "&long=", @long);
 		}
@@ -9377,7 +8922,7 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId);
 		}
 
-		public virtual IAsyncResult BeginSendTweet(string status, long inReplyToStatusId, double lat, double @long)
+		public virtual IAsyncResult BeginSendTweet(string status, long inReplyToStatusId, string lat, string @long)
 		{
 			return BeginWithHammock<TwitterStatus>(WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId, "&lat=", lat, "&long=", @long);
 		}
@@ -9422,66 +8967,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<int>>(WebMethod.Get, "statuses/{id}/retweeted_by/ids", FormatAsString, "?id=", id, "&count=", count);
 		}
 
-		public virtual IAsyncResult BeginListFriends()
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/friends", FormatAsString);
-		}
-
-		public virtual IAsyncResult BeginListFriends(long cursor)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/friends", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual IAsyncResult BeginListFriendsOf(int userId)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/friends", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual IAsyncResult BeginListFriendsOf(int userId, long cursor)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/friends", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual IAsyncResult BeginListFriendsOf(string screenName)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/friends", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual IAsyncResult BeginListFriendsOf(string screenName, long cursor)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/friends", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
-		public virtual IAsyncResult BeginListFollowers()
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/followers", FormatAsString);
-		}
-
-		public virtual IAsyncResult BeginListFollowers(long cursor)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/followers", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual IAsyncResult BeginListFollowersOf(int userId)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/followers", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual IAsyncResult BeginListFollowersOf(int userId, long cursor)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/followers", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual IAsyncResult BeginListFollowersOf(string screenName)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/followers", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual IAsyncResult BeginListFollowersOf(string screenName, long cursor)
-		{
-			return BeginWithHammock<TwitterCursorList<TwitterUser>>(WebMethod.Get, "statuses/followers", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
 		public virtual IAsyncResult BeginGetUserProfile()
 		{
 			return BeginWithHammock<TwitterUser>(WebMethod.Get, "account/verify_credentials", FormatAsString);
@@ -9512,19 +8997,9 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterUser>>(WebMethod.Get, "users/search", FormatAsString, "?q=", q, "&page=", page, "&per_page=", perPage);
 		}
 
-		public virtual IAsyncResult BeginListUserProfilesFor(IEnumerable<string> screenName)
-		{
-			return BeginWithHammock<IEnumerable<TwitterUser>>(WebMethod.Get, "users/lookup", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual IAsyncResult BeginListUserProfilesFor(IEnumerable<int> userId)
+		public virtual IAsyncResult BeginListUserProfilesFor(string userId)
 		{
 			return BeginWithHammock<IEnumerable<TwitterUser>>(WebMethod.Get, "users/lookup", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual IAsyncResult BeginListUserProfilesFor(IEnumerable<string> screenName, IEnumerable<int> userId)
-		{
-			return BeginWithHammock<IEnumerable<TwitterUser>>(WebMethod.Get, "users/lookup", FormatAsString, "?screen_name=", screenName, "&user_id=", userId);
 		}
 
 		public virtual IAsyncResult BeginGetProfileImageFor(string screenName)
@@ -9625,6 +9100,16 @@ namespace TweetSharp
 		public virtual TwitterUser EndUpdateProfile(IAsyncResult result, TimeSpan timeout) 
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
+		}
+
+		public virtual TwitterConfiguration EndGetConfiguration(IAsyncResult result) 
+		{
+			return EndWithHammock<TwitterConfiguration>(result);
+		}
+
+		public virtual TwitterConfiguration EndGetConfiguration(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<TwitterConfiguration>(result, timeout);
 		}
 
 		public virtual TwitterUser EndBlockUser(IAsyncResult result) 
@@ -10197,16 +9682,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnPublicTimeline(IAsyncResult result) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result);
-		}
-
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnPublicTimeline(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
-		}
-
 		public virtual IEnumerable<TwitterStatus> EndListTweetsOnHomeTimeline(IAsyncResult result) 
 		{
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result);
@@ -10233,36 +9708,6 @@ namespace TweetSharp
 		}
 
 		public virtual IEnumerable<TwitterStatus> EndListTweetsOnHomeTimelineBefore(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
-		}
-
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimeline(IAsyncResult result) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result);
-		}
-
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimeline(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
-		}
-
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineSince(IAsyncResult result) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result);
-		}
-
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineSince(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
-		}
-
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineBefore(IAsyncResult result) 
-		{
-			return EndWithHammock<IEnumerable<TwitterStatus>>(result);
-		}
-
-		public virtual IEnumerable<TwitterStatus> EndListTweetsOnFriendsTimelineBefore(IAsyncResult result, TimeSpan timeout) 
 		{
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
@@ -10567,46 +10012,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<int>>(result, timeout);
 		}
 
-		public virtual TwitterCursorList<TwitterUser> EndListFriends(IAsyncResult result) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> EndListFriends(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> EndListFriendsOf(IAsyncResult result) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> EndListFriendsOf(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> EndListFollowers(IAsyncResult result) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> EndListFollowers(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> EndListFollowersOf(IAsyncResult result) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result);
-		}
-
-		public virtual TwitterCursorList<TwitterUser> EndListFollowersOf(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
-		}
-
 		public virtual TwitterUser EndGetUserProfile(IAsyncResult result) 
 		{
 			return EndWithHammock<TwitterUser>(result);
@@ -10740,6 +10145,11 @@ namespace TweetSharp
 		public virtual void UpdateProfile(string name, string description, string email, string url, string location, Action<TwitterUser, TwitterResponse> action)
 		{
 			WithHammock(WebMethod.Post, action, "account/update_profile", FormatAsString, "?name=", name, "&description=", description, "&email=", email, "&url=", url, "&location=", location);
+		}
+
+		public virtual void GetConfiguration(Action<TwitterConfiguration, TwitterResponse> action)
+		{
+			WithHammock(action, "help/configuration", FormatAsString);
 		}
 
 		public virtual void BlockUser(int userId, Action<TwitterUser, TwitterResponse> action)
@@ -11932,11 +11342,6 @@ namespace TweetSharp
 			WithHammock(WebMethod.Post, action, "report_spam", FormatAsString, "?user_screen_name=", userScreenName);
 		}
 
-		public virtual void ListTweetsOnPublicTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/public_timeline", FormatAsString);
-		}
-
 		public virtual void ListTweetsOnHomeTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			WithHammock(action, "statuses/home_timeline", FormatAsString);
@@ -12025,51 +11430,6 @@ namespace TweetSharp
 		public virtual void ListTweetsOnHomeTimelineBefore(long maxId, int page, int count, bool includeRts, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
 		{
 			WithHammock(action, "statuses/home_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count, "&include_rts=", includeRts);
-		}
-
-		public virtual void ListTweetsOnFriendsTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString);
-		}
-
-		public virtual void ListTweetsOnFriendsTimeline(int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?count=", count);
-		}
-
-		public virtual void ListTweetsOnFriendsTimeline(int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?page=", page, "&count=", count);
-		}
-
-		public virtual void ListTweetsOnFriendsTimelineSince(long sinceId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId);
-		}
-
-		public virtual void ListTweetsOnFriendsTimelineSince(long sinceId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&count=", count);
-		}
-
-		public virtual void ListTweetsOnFriendsTimelineSince(long sinceId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?since_id=", sinceId, "&page=", page, "&count=", count);
-		}
-
-		public virtual void ListTweetsOnFriendsTimelineBefore(long maxId, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId);
-		}
-
-		public virtual void ListTweetsOnFriendsTimelineBefore(long maxId, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&count=", count);
-		}
-
-		public virtual void ListTweetsOnFriendsTimelineBefore(long maxId, int page, int count, Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends_timeline", FormatAsString, "?max_id=", maxId, "&page=", page, "&count=", count);
 		}
 
 		public virtual void ListTweetsOnUserTimeline(Action<IEnumerable<TwitterStatus>, TwitterResponse> action)
@@ -12577,12 +11937,12 @@ namespace TweetSharp
 			WithHammock(action, "trends/available", FormatAsString);
 		}
 
-		public virtual void ListAvailableTrendsLocations(double lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
+		public virtual void ListAvailableTrendsLocations(string lat, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
 		{
 			WithHammock(action, "trends/available", FormatAsString, "?lat=", lat);
 		}
 
-		public virtual void ListAvailableTrendsLocations(double lat, double @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
+		public virtual void ListAvailableTrendsLocations(string lat, string @long, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse> action)
 		{
 			WithHammock(action, "trends/available", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
@@ -12602,7 +11962,7 @@ namespace TweetSharp
 			WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status);
 		}
 
-		public virtual void SendTweet(string status, double lat, double @long, Action<TwitterStatus, TwitterResponse> action)
+		public virtual void SendTweet(string status, string lat, string @long, Action<TwitterStatus, TwitterResponse> action)
 		{
 			WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&lat=", lat, "&long=", @long);
 		}
@@ -12612,7 +11972,7 @@ namespace TweetSharp
 			WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId);
 		}
 
-		public virtual void SendTweet(string status, long inReplyToStatusId, double lat, double @long, Action<TwitterStatus, TwitterResponse> action)
+		public virtual void SendTweet(string status, long inReplyToStatusId, string lat, string @long, Action<TwitterStatus, TwitterResponse> action)
 		{
 			WithHammock(WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", inReplyToStatusId, "&lat=", lat, "&long=", @long);
 		}
@@ -12657,66 +12017,6 @@ namespace TweetSharp
 			WithHammock(action, "statuses/{id}/retweeted_by/ids", FormatAsString, "?id=", id, "&count=", count);
 		}
 
-		public virtual void ListFriends(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends", FormatAsString);
-		}
-
-		public virtual void ListFriends(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual void ListFriendsOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual void ListFriendsOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual void ListFriendsOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual void ListFriendsOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/friends", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
-		public virtual void ListFollowers(Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/followers", FormatAsString);
-		}
-
-		public virtual void ListFollowers(long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/followers", FormatAsString, "?cursor=", cursor);
-		}
-
-		public virtual void ListFollowersOf(int userId, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/followers", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual void ListFollowersOf(int userId, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/followers", FormatAsString, "?user_id=", userId, "&cursor=", cursor);
-		}
-
-		public virtual void ListFollowersOf(string screenName, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/followers", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual void ListFollowersOf(string screenName, long cursor, Action<TwitterCursorList<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "statuses/followers", FormatAsString, "?screen_name=", screenName, "&cursor=", cursor);
-		}
-
 		public virtual void GetUserProfile(Action<TwitterUser, TwitterResponse> action)
 		{
 			WithHammock(action, "account/verify_credentials", FormatAsString);
@@ -12747,19 +12047,9 @@ namespace TweetSharp
 			WithHammock(action, "users/search", FormatAsString, "?q=", q, "&page=", page, "&per_page=", perPage);
 		}
 
-		public virtual void ListUserProfilesFor(IEnumerable<string> screenName, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "users/lookup", FormatAsString, "?screen_name=", screenName);
-		}
-
-		public virtual void ListUserProfilesFor(IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
+		public virtual void ListUserProfilesFor(string userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
 		{
 			WithHammock(action, "users/lookup", FormatAsString, "?user_id=", userId);
-		}
-
-		public virtual void ListUserProfilesFor(IEnumerable<string> screenName, IEnumerable<int> userId, Action<IEnumerable<TwitterUser>, TwitterResponse> action)
-		{
-			WithHammock(action, "users/lookup", FormatAsString, "?screen_name=", screenName, "&user_id=", userId);
 		}
 
 		public virtual void GetProfileImageFor(string screenName, Action<byte[], TwitterResponse> action)

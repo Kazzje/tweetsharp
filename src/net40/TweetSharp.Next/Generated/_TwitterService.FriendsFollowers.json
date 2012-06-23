@@ -2,3 +2,4 @@
 TwitterCursorList<int>, "friends/ids", ListFriendIdsOf, int userId, long cursor
 TwitterCursorList<int>, "followers/ids", ListFollowerIdsOf, int userId, long cursor
 TwitterCursorList<int>, "followers/ids", ListFollowerIdsOf, string screenName, long cursor
+

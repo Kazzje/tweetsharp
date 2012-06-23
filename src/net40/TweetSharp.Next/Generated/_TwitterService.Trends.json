@@ -12,8 +12,8 @@ TwitterTrends, "trends/weekly", ListWeeklyTrends, string exclude
 TwitterTrends, "trends/weekly", ListWeeklyTrends, DateTime date, string exclude
 
 IEnumerable<WhereOnEarthLocation>, "trends/available", ListAvailableTrendsLocations
-IEnumerable<WhereOnEarthLocation>, "trends/available", ListAvailableTrendsLocations, double lat
-IEnumerable<WhereOnEarthLocation>, "trends/available", ListAvailableTrendsLocations, double lat, double @long
+IEnumerable<WhereOnEarthLocation>, "trends/available", ListAvailableTrendsLocations, string lat
+IEnumerable<WhereOnEarthLocation>, "trends/available", ListAvailableTrendsLocations, string lat, string @long
 
 TwitterLocalTrends, "trends/{woe_id}", ListLocalTrendsFor, long woeId
 
